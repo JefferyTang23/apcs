@@ -2,3 +2,6 @@ Jeffery Tang
 APCS
 HW03 -- The Importance of Binary & Conversion Algorithms
 2021-09-23
+
+For the Celcius to Fahrenheit activity, the last line of code was difficult to write because I was not sure of how to properly format outputs. I had to read 3.6 and some sections 
+after it a few more times before understanding how its usage and syntax.

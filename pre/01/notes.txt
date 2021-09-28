@@ -1,4 +1,6 @@
 Jeffery Tang
 APCS
-HW03 -- The Importance of Binary & Conversion Algorithms
-2021-09-23
+HW05 -- Understanding the Summer Pre-work
+2021-09-27
+
+I had some difficulties creating the file itself with the .java extension in File Explorer. After some time, I realized I can directly create the hello.java in my apcs directory within Atom.

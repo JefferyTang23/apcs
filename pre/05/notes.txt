@@ -1,1 +1,7 @@
+Jeffery Tang
+APCS
+HW03 -- The Importance of Binary & Conversion Algorithms
+2021-09-23
 
+I found difficulties with writing the code for ack because I spent a long time tracing the procedure while writing it. In the end, I realized I should trust the code would do its 
+job as long as there was no error returned by PowerShell.

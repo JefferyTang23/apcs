@@ -1,4 +1,7 @@
-# APCS Repo
+# Jeffery Tang
+# APCS
+# HW03 -- The Importance of Binary & Conversion Algorithms
+# 2021-09-23
 
 ### 0. Binary and Decimals
 The "base" in base-x number system describes different ways to represent values, dictating how many unique digits can be used in each place value.

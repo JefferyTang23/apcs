@@ -1,6 +1,6 @@
 Jeffery Tang
 APCS
-HW03 -- The Importance of Binary & Conversion Algorithms
-2021-09-23
+HW05 -- Understanding the Summer Pre-work
+2021-09-27
 
 I was unable to figure out how to create an array while also placing each value in the correct index in a single line of code. I wasn't able to complete main to test out my code.

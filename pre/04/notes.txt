@@ -1,1 +1,7 @@
+Jeffery Tang
+APCS
+HW03 -- The Importance of Binary & Conversion Algorithms
+2021-09-23
 
+It was interesting to compare the syntax of conditionals in Python and Java. The code appears cleaner in Python while Java incorporates many parentheses and curly brackets that 
+makes the code appear messier.

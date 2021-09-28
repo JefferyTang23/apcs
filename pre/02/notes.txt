@@ -1,1 +1,4 @@
-
+Jeffery Tang
+APCS
+HW03 -- The Importance of Binary & Conversion Algorithms
+2021-09-23

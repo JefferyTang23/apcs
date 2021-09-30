@@ -5,7 +5,7 @@
 
 public class Greet{
 	public static void main (String[] args) {
-		greet();
+		Greet();
 	}
 	public static void Greet(String x) {
 		System.out.println("No hablo queso");

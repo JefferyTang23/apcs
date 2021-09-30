@@ -4,7 +4,10 @@
 //2021-09-29
 
 public class Greet{
-	public static void main(string[] args) {
+	public static void main (String[] args) {
+		greet();
+	}
+	public static void Greet(String x) {
 		System.out.println("No hablo queso");
 	}
 }

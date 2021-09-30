@@ -1,3 +1,3 @@
 #lang racket
 
-(list "Hello, world")
+(list "Hello, world!")

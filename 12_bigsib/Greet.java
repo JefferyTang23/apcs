@@ -1,4 +1,4 @@
-//Triple J: Jeffery Tang (Mathias), Jefford Shau (Dylan), Anthony Sun (Corn)
+//Triple J: Jeffery Tang (Mathias), Jefford Shau (Dylan), Jun Hong Wang (Bob)
 //APCS
 //HW12 -- Greetings with Hello Messages
 //2021-10-5

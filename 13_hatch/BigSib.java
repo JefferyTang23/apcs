@@ -6,7 +6,8 @@
 //DISCO:
 //It is best to define a instance varible as private and before code for methods.
 //QCC:
-//What exactly does creating the BigSib object "richard" allow us to do that can't be done with BigSib.<method>?
+//What does creating the BigSib object "richard" allow us to do that can't be done with 
+//BigSib.<method>?
 
 public class BigSib {
 	private String HelloMsg = "Word up";

@@ -4,7 +4,7 @@
 //2021-10-6
 
 //DISCO:
-//It is best to define a instance varible as private and before code for methods.
+//It is possible to use methods in another java file that use private variables.
 //QCC:
 //What does creating the BigSib object "richard" allow us to do that can't be done with 
 //BigSib.<method>?

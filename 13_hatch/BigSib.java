@@ -10,7 +10,11 @@
 //BigSib.<method>?
 
 public class BigSib {
-	private String HelloMsg = "Word up";
+	private String HelloMsg;
+	public BigSib() {
+		HelloMsg = "Word up";
+	}
+	
 	public String greet(String x) {
 		return ( HelloMsg + " " + x);
 	}

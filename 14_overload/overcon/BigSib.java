@@ -11,7 +11,8 @@
 
 public class BigSib {
 	private String helloMsg; 
- 	public BigSib() {
+	public BigSib() {
+		helloMsg = "Hey,";
 	}
 	public BigSib(String x){
 		helloMsg = x; 

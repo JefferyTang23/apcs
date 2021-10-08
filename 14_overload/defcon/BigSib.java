@@ -11,13 +11,13 @@
 
 public class BigSib {
 	private String helloMsg; 
- 	public BigSib() {
-		helloMsg = "Hey, ";
+	public BigSib() {
+		helloMsg = "Hey,";
 	}
 	public BigSib(String x){
 		helloMsg = x; 
 	}
 	public String greet(String n){
-		return helloMsg + n + "! How are you today?" ;
+		return helloMsg + " " + n + "! How are you doing today?";
 	}
 }

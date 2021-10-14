@@ -28,7 +28,7 @@ public class BankAccount {
     System.out.println (accountNumber);
     System.out.println (accBalance);
     }
-  public static void main(String[] args) {
+  public void main(String[] args) {
     deposit (100.0);
     withdraw (50.0);
     setHolderName ("student");

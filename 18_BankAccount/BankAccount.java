@@ -1,11 +1,11 @@
 
 public class BankAccount {
-  public String holderName;
-  private String accountPassword;
-  private int pin;
-  public int accountNumber;
-  private double accBalance;
-  private void withdraw (double withdrawAmount) {
+  public static String holderName;
+  private static String accountPassword;
+  private static int pin;
+  public static int accountNumber;
+  private static double accBalance;
+  private static void withdraw (double withdrawAmount) {
     accBalance = accBalance - withdrawAmount;
     }
   private void deposit (double depositAmount) {
@@ -28,7 +28,7 @@ public class BankAccount {
     System.out.println (accountNumber);
     System.out.println (accBalance);
     }
-  public void main(String[] args) {
+  public static void main(String[] args) {
     deposit (100.0);
     withdraw (50.0);
     setHolderName ("student");

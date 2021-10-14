@@ -1,3 +1,9 @@
+/*
+DISCO: 
+QCC: 
+Team NIWWD's Latest and Greatest Q2 Response: 
+Team NIWWD's Latest and Greatest Q3 Response: 
+*/
 
 public class BankAccount {
   public static String holderName;
@@ -5,6 +11,7 @@ public class BankAccount {
   private static int pin;
   public static int accountNumber;
   private static double accBalance;
+
   private static void withdraw (double withdrawAmount) {
     accBalance = accBalance - withdrawAmount;
     }

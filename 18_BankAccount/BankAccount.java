@@ -28,4 +28,12 @@ public class BankAccount {
     System.out.println (accountNumber);
     System.out.println (accBalance);
     }
+  public void main () {
+    deposit (100.0);
+    withdraw (50.0);
+    setHolderName ("student");
+    setAccountNumber (123456789);
+    setAccountPassword ("PlzHackMe123");
+    setPin (0123);
+    printInfo ();
 }

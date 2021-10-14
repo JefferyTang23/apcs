@@ -8,22 +8,22 @@ public class BankAccount {
   private static void withdraw (double withdrawAmount) {
     accBalance = accBalance - withdrawAmount;
     }
-  private void deposit (double depositAmount) {
+  private static void deposit (double depositAmount) {
     accBalance = accBalance + depositAmount;
     }
-  private void setHolderName (String name) {
+  private static void setHolderName (String name) {
     holderName = name;
     }
-  private void setAccountNumber (int accNum) {
+  private static void setAccountNumber (int accNum) {
     accountNumber = accNum;
     }
-  private void setAccountPassword (String accPW) {
+  private static void setAccountPassword (String accPW) {
     accountPassword = accPW;
     }
-  private void setPin (int accPIN) {
+  private static void setPin (int accPIN) {
     pin = accPIN;
     }
-  private void printInfo () {
+  private static void printInfo () {
     System.out.println (holderName);
     System.out.println (accountNumber);
     System.out.println (accBalance);

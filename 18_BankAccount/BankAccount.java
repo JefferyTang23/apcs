@@ -36,7 +36,7 @@ public class BankAccount {
     System.out.println (accBalance);
     }
   public static void main(String[] args) {
-    deposit (100.0);
+    deposit (300.0);
     withdraw (50.0);
     setHolderName ("student");
     setAccountNumber (123456789);

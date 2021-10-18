@@ -20,7 +20,7 @@ public class BankAccount {
     accountNumber = accNumb;
     accBalance = accBal;
   }
-  BankAccount Account = new BankAccount ("John", 123098765, 140.99)
+  BankAccount Account = new BankAccount ("John", 123098765, 140.99);
 
   private void withdraw (double withdrawAmount) {
     accBalance = accBalance - withdrawAmount;

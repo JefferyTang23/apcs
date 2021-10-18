@@ -88,11 +88,12 @@ public class BankAccount {
     // INSERT YOUR METHOD CALLS FOR TESTING HERE
     ba.setName("John");
     ba.setPasswd("hellotheremyfriends");
-    ba.setPin((short) 213);
+    ba.setPin((short) 2131);
     ba.setAcctNum(123456789);
     ba.setBalance(1000.00);
     ba.deposit(500.0);
     ba.withdraw(241.0);
+    system.out.println(ba.toString());
   }//end main()
 
 }//end class BankAccount

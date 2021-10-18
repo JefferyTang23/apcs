@@ -47,7 +47,7 @@ public class BankAccount {
       return oldAcctNum;
     }
     else {
-       System.out.println ("The entered Account Number is not a 9 digit number; please enter a 9 digit number")
+       System.out.println ("The entered Account Number is not a 9 digit number; please enter a 9 digit number");
   }
 
   public double setBalance( double newBalance ) {

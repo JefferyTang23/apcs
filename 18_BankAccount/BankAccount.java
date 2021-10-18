@@ -1,5 +1,8 @@
 /*
-NIWWD: Kevin Xiao + Mr. Swag, Jeffery Tang + Mathias, Kaitlin Ho + Apple
+NIWWD: Kevin Xiao + Mr. Swag, Jeffery Tang + Mathias, Kaitlin Ho + Apple 
+APCS
+HW18 -- BankAccount in Java
+2021-10-18
 DISCO: We discovered that you can declare a new object within the main method, and then it also eliminates the need to have static in your methods.
 Declaring a new object in the main method can allow you to initialize it using non-static methods inside a static context.
 QCC: Why does the main method have to be static?

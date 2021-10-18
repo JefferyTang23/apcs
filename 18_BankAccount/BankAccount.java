@@ -13,13 +13,14 @@ public class BankAccount {
   public int accountNumber;
   private double accBalance;
   
-  public BankAccount (String hName, String accPass, int fourdPIN, int accNumb, double accBal) {
+  public BankAccount (String hName,/* String accPass, int fourdPIN,*/ int accNumb, double accBal) {
     holderName = hName;
-    accountPassword = accPass;
-    pin = fourdPIN;
+    //accountPassword = accPass;
+    //pin = fourdPIN;
     accountNumber = accNumb;
     accBalance = accBal;
   }
+  BankAccount Account = new BankAccount ("John", 123098765, 140.99)
 
   private void withdraw (double withdrawAmount) {
     accBalance = accBalance - withdrawAmount;

@@ -93,6 +93,6 @@ public class BankAccount {
     ba.deposit(500.0);
     ba.withdraw(241.0);
     System.out.println(ba.toString());
-  }//end main()
+  }
 
-}//end class BankAccount
+}

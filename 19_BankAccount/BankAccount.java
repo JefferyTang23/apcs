@@ -41,7 +41,8 @@ public class BankAccount {
       return oldPin;
     }
     else {
-       System.out.println ("The entered Account Number is not a 9 digit number; please enter a 9 digit number");
+       accNum = 9999;
+       System.out.println ("The entered Account PIN is not a 4 digit number; please enter a 4 digit number");
     }
   }
 
@@ -52,6 +53,7 @@ public class BankAccount {
       return oldAcctNum;
     }
     else {
+       accNum = 999999999;
        System.out.println ("The entered Account Number is not a 9 digit number; please enter a 9 digit number");
     }
   }
@@ -69,6 +71,7 @@ public class BankAccount {
   }
 
   public void withdraw( double withdrawAmount ) {
+    if (
     balance = balance - withdrawAmount;
   }
 

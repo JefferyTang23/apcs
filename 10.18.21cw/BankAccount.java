@@ -85,7 +85,6 @@ public class BankAccount {
   //main method for testing
   public static void main( String[] args ) {
     BankAccount ba = new BankAccount();
-    // INSERT YOUR METHOD CALLS FOR TESTING HERE
     ba.setName("John");
     ba.setPasswd("hellotheremyfriends");
     ba.setPin((short) 2131);

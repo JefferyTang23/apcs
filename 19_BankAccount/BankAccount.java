@@ -35,19 +35,25 @@ public class BankAccount {
   }
 
   public short setPin( short newPin ) {
-    short oldPin = pin;
-    pin = newPin;
-    return oldPin;
+    if (1000 <= newPin && newPin <= 9998) {
+      short oldPin = pin;
+      pin = newPin;
+      return oldPin;
+    }
+    else {
+       System.out.println ("The entered Account Number is not a 9 digit number; please enter a 9 digit number");
+    }
   }
 
   public int setAcctNum( int newAcctNum ) {
-    if (100000000 <= newAcctNum & newAcctNum <= 999999998) {
+    if (100000000 <= newAcctNum && newAcctNum <= 999999998) {
       int oldAcctNum = acctNum;
       acctNum = newAcctNum;
       return oldAcctNum;
     }
     else {
        System.out.println ("The entered Account Number is not a 9 digit number; please enter a 9 digit number");
+    }
   }
 
   public double setBalance( double newBalance ) {

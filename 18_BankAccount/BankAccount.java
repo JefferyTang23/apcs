@@ -53,5 +53,6 @@ public class BankAccount {
     setAccountPassword ("PlzHackMe123");
     setPin (0123);
     printInfo ();
+    System.out.println (Account);
     }
 }

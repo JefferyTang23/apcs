@@ -71,8 +71,13 @@ public class BankAccount {
   }
 
   public void withdraw( double withdrawAmount ) {
-    if (
-    balance = balance - withdrawAmount;
+    if ( withdrawAmount <= balance ) {
+      balance = balance - withdrawAmount;
+      return true;
+    }
+    else {
+      System.out.println("Account balance is less than the requested withdrawal amount; please enter an amount equal to or less than the account balance")
+      return false;
   }
 
 

@@ -45,7 +45,6 @@ public class BankAccount {
     System.out.println (accBalance);
     }
   public static void main(String[] args) {
-    printInfo ();
     BankAccount Account = new BankAccount ("John", 123098765, 140.99);
     System.out.println (Account);
     }

@@ -88,7 +88,7 @@ public class BankAccount {
     // INSERT YOUR METHOD CALLS FOR TESTING HERE
     ba.setName("John");
     ba.setPasswd("hellotheremyfriends");
-    ba.setPin(2131.0);
+    ba.setPin(213);
     ba.setAcctNum(123456789);
     ba.setBalance(1000.00);
     ba.deposit(500.0);

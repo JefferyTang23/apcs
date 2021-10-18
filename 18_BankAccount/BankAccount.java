@@ -2,9 +2,11 @@
 DISCO: 
 QCC: 
 Team NIWWD's Latest and Greatest Q2 Response: We know that Java provides a default contructor before we wrote our own constructor because 
+Team NIWWD's Latest and Greatest Q3 Response:
+  BankAccount Account = new BankAccount ("John", 123098765, 140.99);
+  System.out.println (Account);
+Its output is "BankAccount@5d22bbb7"
 */
-
-//Team NIWWD's Latest and Greatest Q3 Response: 
 
 public class BankAccount {
   public String holderName;

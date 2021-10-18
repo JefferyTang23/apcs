@@ -41,9 +41,13 @@ public class BankAccount {
   }
 
   public int setAcctNum( int newAcctNum ) {
-    int oldAcctNum = acctNum;
-    acctNum = newAcctNum;
-    return oldAcctNum;
+    if (100000000 <= newAcctNum & newAcctNum <= 999999998) {
+      int oldAcctNum = acctNum;
+      acctNum = newAcctNum;
+      return oldAcctNum;
+    }
+    else {
+       System.out.println ("The entered Account Number is not a 9 digit number; please enter a 9 digit number")
   }
 
   public double setBalance( double newBalance ) {

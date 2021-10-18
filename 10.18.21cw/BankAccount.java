@@ -85,13 +85,13 @@ public class BankAccount {
   //main method for testing
   public static void main( String[] args ) {
     // INSERT YOUR METHOD CALLS FOR TESTING HERE
-    Account.setName("John");
-    Account.setPasswd("hellotheremyfriends");
-    Account.setPin(2131);
-    Account.setAcctNum(123456789);
-    Account.setBalance(1000.00);
-    Account.deposit(500.0);
-    Account.withdraw(241.0);
+    ba.setName("John");
+    ba.setPasswd("hellotheremyfriends");
+    ba.setPin(2131);
+    ba.setAcctNum(123456789);
+    ba.setBalance(1000.00);
+    ba.deposit(500.0);
+    ba.withdraw(241.0);
     BankAccount ba = new BankAccount();
   }//end main()
 

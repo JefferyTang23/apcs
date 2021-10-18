@@ -78,9 +78,9 @@ public class BankAccount {
     else {
       System.out.println("Account balance is less than the requested withdrawal amount; please enter an amount equal to or less than the account balance")
       return false;
+    }
   }
-
-
+     
   //overwritten toString()
   public String toString() {
     String retStr = "\nAccount info:\n=======================";

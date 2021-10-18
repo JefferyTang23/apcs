@@ -84,6 +84,7 @@ public class BankAccount {
 
   //main method for testing
   public static void main( String[] args ) {
+    BankAccount ba = new BankAccount();
     // INSERT YOUR METHOD CALLS FOR TESTING HERE
     ba.setName("John");
     ba.setPasswd("hellotheremyfriends");
@@ -92,7 +93,6 @@ public class BankAccount {
     ba.setBalance(1000.00);
     ba.deposit(500.0);
     ba.withdraw(241.0);
-    BankAccount ba = new BankAccount();
   }//end main()
 
 }//end class BankAccount

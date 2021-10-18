@@ -20,7 +20,6 @@ public class BankAccount {
     accountNumber = accNumb;
     accBalance = accBal;
   }
-  BankAccount Account = new BankAccount ("John", 123098765, 140.99);
 
   private void withdraw (double withdrawAmount) {
     accBalance = accBalance - withdrawAmount;
@@ -45,8 +44,9 @@ public class BankAccount {
     System.out.println (accountNumber);
     System.out.println (accBalance);
     }
-  public void main(String[] args) {
+  public static void main(String[] args) {
     printInfo ();
+    BankAccount Account = new BankAccount ("John", 123098765, 140.99);
     System.out.println (Account);
     }
 }

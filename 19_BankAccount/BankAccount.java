@@ -76,7 +76,7 @@ public class BankAccount {
       return true;
     }
     else {
-      System.out.println("Account balance is less than the requested withdrawal amount; please enter an amount equal to or less than the account balance")
+      System.out.println("Account balance is less than the requested withdrawal amount; please enter an amount equal to or less than the account balance");
       return false;
     }
   }

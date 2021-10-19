@@ -88,6 +88,8 @@ public class BankAccount {
      else {
         return false;
      }
+  }
+  
   //overwritten toString()
   public String toString() {
     String retStr = "\nAccount info:\n=======================";

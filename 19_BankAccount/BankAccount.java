@@ -6,8 +6,11 @@
 **/
 
 /**
-   DISCO: 
-   QCC: 
+   DISCO: We can use boolean if statements within methods. We have to declare our variables outside of our if statements.
+   QCC: When we put our return line before our print line, why didn't we return anything?
+   How would we allow the user to input into the machine? (How would we implement scanners into our program?)
+   Is there any way to cheat our authentication?
+    
 **/
 
 public class BankAccount {
@@ -35,29 +38,27 @@ public class BankAccount {
   }
 
   public short setPin( short newPin ) {
-    if (1000 <= newPin && newPin <= 9998) {
-      short oldPin = pin;
+    short oldPin = pin;
+    if ((newPin >= 1000) && (newPin <= 9998)) {
       pin = newPin;
-      return oldPin;
     }
-    else {
-       acctNum = 9999;
-       System.out.println ("The entered Account PIN is not a 4 digit number; please enter a 4 digit number");
-       return acctNum;
-    }
+     else {
+        System.out.println("The entered PIN is not a four digit number, please enter a four digit number");
+        pin = 9999;
+   }
+    return oldPin;
   }
 
   public int setAcctNum( int newAcctNum ) {
-    if (100000000 <= newAcctNum && newAcctNum <= 999999998) {
-      int oldAcctNum = acctNum;
+    int oldAcctNum = acctNum;
+    if ((newAcctNum >= 100000000) && (newAcctNum <= 999999998)) {
       acctNum = newAcctNum;
-      return oldAcctNum;
     }
     else {
+       System.out.println("The entered Account Number is not a 9 digit number; please enter a 9 digit number");
        acctNum = 999999999;
-       System.out.println ("The entered Account Number is not a 9 digit number; please enter a 9 digit number");
-       return acctNum;
-    }
+   }
+    return oldAcctNum;
   }
 
   public double setBalance( double newBalance ) {
@@ -72,21 +73,21 @@ public class BankAccount {
     balance = balance + depositAmount;
   }
 
-  public void withdraw( double withdrawAmount ) {
-    if ( withdrawAmount <= balance ) {
+  public boolean withdraw( double withdrawAmount ) {
+    if (withdrawAmount <= balance){
       balance = balance - withdrawAmount;
       return true;
-    }
+  }
     else {
-      System.out.println("Account balance is less than the requested withdrawal amount; please enter an amount equal to or less than the account balance");
-      return false;
+       System.out.println("There are not enough sufficient funds to be withdrawn.");
+       return false;
     }
   }
-  
-  public boolean authenticate(int accountNum, String password){
+ public boolean authenticate(int accountNum, String password){
        return acctNum == accountNum && passwd == password;
   }
-  
+
+
   //overwritten toString()
   public String toString() {
     String retStr = "\nAccount info:\n=======================";
@@ -99,6 +100,7 @@ public class BankAccount {
     return retStr;
   }
 
+
   //main method for testing
   public static void main( String[] args ) {
     BankAccount ba = new BankAccount();
@@ -110,6 +112,24 @@ public class BankAccount {
     ba.deposit(500.0);
     ba.withdraw(241.0);
     System.out.println(ba.toString());
+    System.out.println("Bad TestID and bad password.");
+    System.out.println(ba.authenticate(123213512,"holacomaestas!"));
+    System.out.println("Good TestID and bad password.");
+    System.out.println(ba.authenticate(123456789,"holacomaestas!"));
+    System.out.println("Bad TestID and good password.");
+    System.out.println(ba.authenticate(121235,"hellotheremyfriends"));
+    System.out.println("Good TestID and good password.");
+    System.out.println(ba.authenticate(123456789, "hellotheremyfriends"));
+     
+    BankAccount TEST1 = new BankAccount();
+    TEST1.setName("TEST1");
+    TEST1.setPasswd("testpassword");
+    TEST1.setPin((short) 3333);
+    TEST1.setAcctNum(1234567891);
+    TEST1.setBalance(1.0);
+    TEST1.deposit(0.0);
+    TEST1.withdraw(200.0);
+    System.out.println(TEST1.toString());
   }
 
 }

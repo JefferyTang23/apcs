@@ -6,8 +6,12 @@
 **/
 
 /**
-   DISCO: 
-   QCC: 
+   DISCO: We can use boolean if statements within methods. We have to declare our variables outside of our if statements.
+   QCC: When we put our return line before our print line, why didn't we return anything?
+   How would we allow the user to input into the machine? (How would we implement scanners into our program?)
+   Is there any way to cheat our authentication?
+   
+   How to return 
 **/
 
 public class BankAccount {
@@ -35,29 +39,27 @@ public class BankAccount {
   }
 
   public short setPin( short newPin ) {
-    if ((short) 1000 <= newPin && newPin <= (short) 9998){
-      short oldPin = pin;
+    short oldPin = pin;
+    if ((newPin >= 1000) && (newPin <= 9998)) {
       pin = newPin;
-      return oldPin;
-  }
-    else {
-      System.out.println ("The entered PIN is not a 4 digit number; please enter a 4 digit number");
-      short oldPin = (short) 999999999;
-      return oldPin;
     }
+     else {
+        System.out.println("The entered PIN is not a four digit number, please enter a four digit number");
+        pin = 9999;
+   }
+    return oldPin;
   }
 
   public int setAcctNum( int newAcctNum ) {
-    if (100000000 <= newAcctNum && newAcctNum <= 999999998) {
-      int oldAcctNum = acctNum;
+    int oldAcctNum = acctNum;
+    if ((newAcctNum >= 100000000) && (newAcctNum <= 999999998)) {
       acctNum = newAcctNum;
-      return oldAcctNum;
     }
     else {
-       System.out.println ("The entered Account Number is not a 9 digit number; please enter a 9 digit number");
-       int oldAcctNum = 999999999;
-       return oldAcctNum;
-    }
+       System.out.println("The entered Account Number is not a 9 digit number; please enter a 9 digit number");
+       acctNum = 999999999;
+   }
+    return oldAcctNum;
   }
 
   public double setBalance( double newBalance ) {

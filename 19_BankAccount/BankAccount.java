@@ -83,13 +83,8 @@ public class BankAccount {
     }
   }
   
-  public boolean authenticate(int an, String pw) {
-     if (an == acctNum && pw = passwd) {
-        return true;
-     }
-     else {
-        return false;
-     }
+  public boolean authenticate(int accountNum, String password){
+       return acctNum == accountNum && passwd == password;
   }
   
   //overwritten toString()

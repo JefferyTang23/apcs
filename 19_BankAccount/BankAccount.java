@@ -80,7 +80,14 @@ public class BankAccount {
       return false;
     }
   }
-     
+  
+  public boolean authenticate(int an, String pw) {
+     if (an == acctNum && pw = passwd) {
+        return true;
+     }
+     else {
+        return false;
+     }
   //overwritten toString()
   public String toString() {
     String retStr = "\nAccount info:\n=======================";
@@ -92,7 +99,6 @@ public class BankAccount {
     retStr = retStr + "\n=======================";
     return retStr;
   }
-
 
   //main method for testing
   public static void main( String[] args ) {

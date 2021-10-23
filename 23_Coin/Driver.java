@@ -18,7 +18,7 @@ public class Driver {
 
 
     //test default constructor
-    /*===================TOP==========================
+    //===================TOP==========================
       Coin mine = new Coin();
       //test 1st overloaded constructor
       Coin yours = new Coin( "quarter" );
@@ -35,13 +35,13 @@ public class Driver {
       System.out.println("yours: " + yours);
       System.out.println("wayne: " + wayne);
       //test equals() method
-      if ( yours.equals(wayne) ) {
+      /*if ( yours.equals(wayne) ) {
         System.out.println( "Matchee matchee!" );
       }
       else {
         System.out.println( "No match. Firestarter you can not be." );
-      }
-      ====================BOTTOM======================*/
+      }*/
+      //====================BOTTOM======================
 
   }//end main()
 

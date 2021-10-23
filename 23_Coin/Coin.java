@@ -1,7 +1,8 @@
 /***
- *  class Coin
- *  by Clyde "Thluffy" Sinclair
- *  SKELETON
+Monke: Prattay Dey + <insert duck name>, Jeffery Tang + Mathias
+APCS
+HW23 -- Coin
+2021-10-23
  ***/
 
 public class Coin {
@@ -22,6 +23,8 @@ public class Coin {
    ***/
   public Coin() {
     name = "null";
+    upFace = "heads";
+    System.out.println(toString());
   }
 
 
@@ -37,8 +40,9 @@ public class Coin {
       postcond:
   ***/
   public Coin( String s ) {
-    if
-
+    name = s;
+    upFace = "heads";
+    System.out.println(toString());
   }
 
 
@@ -48,7 +52,9 @@ public class Coin {
       postcond:
   ***/
   public Coin( String s, String nowFace ) {
-
+    name = s;
+    upFace = nowFace;
+    System.out.println(toString());
   }
 
 
@@ -83,22 +89,22 @@ public class Coin {
    * Returns value assigned.
    ***/
   private double assignValue( String s ) {
-    if (s = "penny") {
+    if (s == "penny") {
       value = 0.01;
-    } else if (s = "nickel") {
+    } else if (s == "nickel") {
       value = 0.05;
-    } else if (s = "dime") {
+    } else if (s == "dime") {
       value = 0.10;
-    } else if (s = "quarter") {
+    } else if (s == "quarter") {
       value = 0.25;
-    } else if (s = "half dollar") {
+    } else if (s == "half dollar") {
       value = 0.50;
-    } else if (s = "dollar") {
+    } else if (s == "dollar") {
       value = 1.00;
     } else {
-      System.out.println ("ERROR: unrecognized coin name")
-      return value
+      System.out.println ("ERROR: unrecognized coin name");
     }
+    return value;
   }
 
 
@@ -122,8 +128,10 @@ public class Coin {
    * Returns "heads" or "tails"
    ***/
   public String flip() {
+    bias = 0.5;
     flipCtr += 1;
-    headOrTails = Math.random()
+    double headOrTails = Math.random();
+    System.out.println(headOrTails);
     if (headOrTails >= bias) {
       headsCtr += 1;
       upFace = "heads";
@@ -143,7 +151,7 @@ public class Coin {
    * or both showing tails. False otherwise.
    ***/
   public boolean equals( Coin other ) {
-
+    return true;
   }
 
 

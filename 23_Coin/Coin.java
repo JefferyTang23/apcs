@@ -3,6 +3,7 @@ Monke: Prattay Dey + <insert duck name>, Jeffery Tang + Mathias
 APCS
 HW23 -- Coin
 2021-10-23
+time spent: 0.8
  ***/
 
 public class Coin {

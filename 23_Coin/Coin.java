@@ -8,7 +8,7 @@ public class Coin {
 
   //attributes aka instance vars
   public double value;
-  public boolean upFace;
+  public String upFace;
   public String name;
   public int flipCtr;
   public int headsCtr;
@@ -55,23 +55,23 @@ public class Coin {
   // Accessors...
   // ----------------------------
   public String getUpFace() {
-
+    return upFace;
   }
 
   public int getFlipCtr() {
-
+    return flipCtr;
   }
 
   public double getValue() {
-
+    return value;
   }
 
   public int getHeadsCtr() {
-
+    return headsCtr;
   }
 
   public int getTailsCtr() {
-
+    return tailsCtr;
   }
   // ----------------------------
 
@@ -83,7 +83,22 @@ public class Coin {
    * Returns value assigned.
    ***/
   private double assignValue( String s ) {
-
+    if (s = "penny") {
+      value = 0.01;
+    } else if (s = "nickel") {
+      value = 0.05;
+    } else if (s = "dime") {
+      value = 0.10;
+    } else if (s = "quarter") {
+      value = 0.25;
+    } else if (s = "half dollar") {
+      value = 0.50;
+    } else if (s = "dollar") {
+      value = 1.00;
+    } else {
+      System.out.println ("ERROR: unrecognized coin name")
+      return value
+    }
   }
 
 
@@ -107,12 +122,16 @@ public class Coin {
    * Returns "heads" or "tails"
    ***/
   public String flip() {
+    flipCtr += 1;
     headOrTails = Math.random()
     if (headOrTails >= bias) {
-      return "heads";
-      System.out.println ()
+      headsCtr += 1;
+      upFace = "heads";
+      return upFace;
     } else {
-      return "tails";
+      tailsCtr += 1;
+      upFace = "tails";
+      return upFace;
     }
   }
 
@@ -134,7 +153,7 @@ public class Coin {
    * postcond: Return String comprised of name and current face
    ***/
   public String toString() {
-
+    return (name + " -- " + upFace);
   }
 
 }//end class

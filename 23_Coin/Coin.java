@@ -1,5 +1,5 @@
 /***
-Monke: Prattay Dey + <insert duck name>, Jeffery Tang + Mathias
+Monke: Prattay Dey + Winnie, Jeffery Tang + Mathias
 APCS
 HW23 -- Coin
 2021-10-23
@@ -25,6 +25,7 @@ public class Coin {
   public Coin() {
     name = "null";
     upFace = "heads";
+    bias = 0.5;
     System.out.println(toString());
   }
 
@@ -43,6 +44,8 @@ public class Coin {
   public Coin( String s ) {
     name = s;
     upFace = "heads";
+    bias = 0.5;
+    value = assignValue(s);
     System.out.println(toString());
   }
 
@@ -55,6 +58,8 @@ public class Coin {
   public Coin( String s, String nowFace ) {
     name = s;
     upFace = nowFace;
+    bias = 0.5;
+    value = assignValue(s);
     System.out.println(toString());
   }
 
@@ -115,7 +120,11 @@ public class Coin {
       postcond: Coin's attribs reset to starting vals
   ***/
   public void reset( String s, double d ) {
-
+    upFace = s;
+    bias = d;
+    flipCtr = 0;
+    headsCtr = 0;
+    tailsCtr = 0;
   }
 
 
@@ -129,7 +138,6 @@ public class Coin {
    * Returns "heads" or "tails"
    ***/
   public String flip() {
-    bias = 0.5;
     flipCtr += 1;
     double headOrTails = Math.random();
     System.out.println(headOrTails);
@@ -152,7 +160,7 @@ public class Coin {
    * or both showing tails. False otherwise.
    ***/
   public boolean equals( Coin other ) {
-    return true;
+    return this.upFace == other.upFace;
   }
 
 

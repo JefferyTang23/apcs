@@ -1,5 +1,5 @@
 /***
-Monke: Prattay Dey + <insert duck name>, Jeffery Tang + Mathias
+Monke: Prattay Dey + Winnie, Jeffery Tang + Mathias
 APCS
 HW23 -- Coin
 2021-10-23
@@ -31,12 +31,12 @@ public class Driver {
       System.out.println("yours: " + yours);
       System.out.println("wayne: " + wayne);
       //test equals() method
-      /*if ( yours.equals(wayne) ) {
+      if ( yours.equals(wayne) ) {
         System.out.println( "Matchee matchee!" );
       }
       else {
         System.out.println( "No match. Firestarter you can not be." );
-      }*/
+      }
       //====================BOTTOM======================
 
   }//end main()

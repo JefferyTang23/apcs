@@ -6,6 +6,14 @@ HW23 -- Coin
 time spent: 0.8
  ***/
 
+/*
+DISCOS:
+- Initially thought instance var upFace would be a boolean as there are only 2 possibilities, but found it much more convenient to use it in a String.
+
+QCC:
+- For the reset() method, one of the parameters inputs allows the user to change the bias value. Why would we need to change bias if a coin always has a 50/50 chance of landing on either side?
+- We noticed that the reset() method is not used in the driver file, so is it necessary? 
+*/
 public class Coin {
 
   //attributes aka instance vars
@@ -140,7 +148,7 @@ public class Coin {
   public String flip() {
     flipCtr += 1;
     double headOrTails = Math.random();
-    System.out.println(headOrTails);
+    //System.out.println(headOrTails);
     if (headOrTails >= bias) {
       headsCtr += 1;
       upFace = "heads";

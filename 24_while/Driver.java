@@ -1,11 +1,17 @@
 /***
 Monke: Prattay Dey + Winnie, Jeffery Tang + Mathias
 APCS
-HW23 -- Coin
-2021-10-23
-time spent: 0.8
+HW24 -- Coin Flip with While
+2021-10-25
+time spent: 1
  ***/
 
+/*
+DISCOS:
+- 
+QCC:
+- 
+*/
 public class Driver {
 
   public static void main( String[] args ) {
@@ -15,7 +21,7 @@ public class Driver {
 
     //test default constructor
     //===================TOP==========================
-      Coin mine = new Coin();
+      /*Coin mine = new Coin();
       //test 1st overloaded constructor
       Coin yours = new Coin( "quarter" );
       //test 2nd overloaded constructor
@@ -36,23 +42,36 @@ public class Driver {
       }
       else {
         System.out.println( "No match. Firestarter you can not be." );
-      }
-
-      flipWhile(50, 70000, 2005, yours, wayne);
+      }*/
+      Coin hello = new Coin("penny");
+      Coin world = new Coin("dime");
+      flipWhile(50, 70000, 2005, hello, world);
       //====================BOTTOM======================
 
   }//end main()
   public static void flipWhile(int x, int y, int z, Coin m, Coin n) {
+    int matchCtr = 0;
     m.reset ("heads", 0.5);
     n.reset ("heads", 0.5);
-    while (m.headsCtr + n.headsCtr <= x && m.matchCtr <= y & m.matchCtr <= 65536 && m.matchCtr%z == 0) {
+    while (!(m.headsCtr + n.headsCtr > x && matchCtr > y && matchCtr > 65536 && matchCtr%z == 0)) {
       m.flip();
       n.flip();
+      if (m.equals(n)) {
+        matchCtr += 1;
+      }
+      else {
+        matchCtr = matchCtr;
+      }
     }
-    System.out.println("Number of heads: ");
+    System.out.println("Number of flips: ");
+    System.out.println(m.getflipCtr());
+    System.out.println("Number of heads for the first coin: ");
     System.out.println(m.getHeadsCtr());
+    System.out.println("Number of heads for the first coin: ");
     System.out.println(n.getHeadsCtr());
+    System.out.println("Total number of heads for the first coin: ");
+    System.out.println(m.getHeadsCtr() + n.getHeadsCtr());
     System.out.println("Number of matches: ");
-    //System.out.println(m.matchCtr());
+    System.out.println(matchCtr);
   }
 }//end class

@@ -1,18 +1,16 @@
 /***
 Monke: Prattay Dey + Winnie, Jeffery Tang + Mathias
 APCS
-HW23 -- Coin
-2021-10-23
-time spent: 0.8
+HW24 -- Coin Flip with While
+2021-10-25
+time spent: 1
  ***/
 
 /*
 DISCOS:
-- Initially thought instance var upFace would be a boolean as there are only 2 possibilities, but found it much more convenient to use it in a String.
-
+- 
 QCC:
-- For the reset() method, one of the parameters inputs allows the user to change the bias value. Why would we need to change bias if a coin always has a 50/50 chance of landing on either side?
-- We noticed that the reset() method is not used in the driver file, so is it necessary?
+- 
 */
 public class Coin {
 
@@ -24,7 +22,6 @@ public class Coin {
   public int headsCtr;
   public int tailsCtr;
   public double bias;
-  public int matchCtr;
 
   /***
    *  Coin() -- default constuctor
@@ -134,7 +131,6 @@ public class Coin {
     flipCtr = 0;
     headsCtr = 0;
     tailsCtr = 0;
-    matchCtr = 0;
   }
 
 
@@ -170,9 +166,9 @@ public class Coin {
    * or both showing tails. False otherwise.
    ***/
   public boolean equals( Coin other ) {
-    matchCtr += 1;
     return this.upFace == other.upFace;
   }
+  
 
 
   /***

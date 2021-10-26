@@ -3,14 +3,15 @@ Monke: Prattay Dey + Winnie, Jeffery Tang + Mathias
 APCS
 HW24 -- Coin Flip with While
 2021-10-25
-time spent: 1
+time spent: 1.0 hr
  ***/
 
 /*
 DISCOS:
-- 
+- The symbol "!" before a boolean statement would be similar to "not" in English. It executes the body as long as the conditional is NOT met. 
 QCC:
-- 
+- Is there a way we can write the function so that it requires less parameters?
+- Could there be a similar function that takes n number of coins instead of just 2?
 */
 public class Driver {
 
@@ -64,7 +65,7 @@ public class Driver {
       }
     }
     System.out.println("Number of flips: ");
-    System.out.println(m.getflipCtr());
+    System.out.println(m.getFlipCtr());
     System.out.println("Number of heads for the first coin: ");
     System.out.println(m.getHeadsCtr());
     System.out.println("Number of heads for the first coin: ");

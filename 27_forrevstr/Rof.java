@@ -3,7 +3,7 @@
    APCS
    HW27 -- FOR the Love of Strings
    2021-10-28
-   time spent: 0.4
+   time spent: 0.8
 **/
 
 /**

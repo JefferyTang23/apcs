@@ -30,6 +30,14 @@ public class Rof {
      }
      return r;
   }
+  public static String reverseR(String s) {
+   String r = "";
+   if (s.length() > 1) {
+      r += s.substring(s.length() - 1, s.length()) + reverseR(s.substring(0, s.length() - 1));
+   }
+   return r;
+}
+
   public static void main(String[] args) {
     System.out.println("FenceF test:");
     System.out.println(FenceF(1));
@@ -37,6 +45,7 @@ public class Rof {
     System.out.println(FenceF(3));
     System.out.println("ReverseF test:");
     System.out.println(reverseF("stressed"));
-    
+    System.out.println("ReverseR test:");
+    System.out.println(reverseR("stressed"));
   }
 }

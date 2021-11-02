@@ -10,15 +10,25 @@ public class Commafier {
   public static String commafyR(int n) {
     String nToS = "" + n;
     String nr = reverseF(nToS);
-    String[] threes;
+    String cr = "";
+    String[] threes = {};
+    int ti = 0;
     if (nToS.length() < 4) {
       return nToS;
     }else {
-      for (int i = 0 ; i < nr.length() ; i += 1) {
-
+      for (int i = 0 ; i < nr.length() ; i += 3) {
+        if ((nr.substring(i)).length() < 3) {
+          threes[ti] = nr.substring(i);
+        }else {
+          threes[ti] = nr.substring(i, i + 3) + ",";
+          ti += 1;
+        }
       }
     }
-    return n;
+    for (int e = 0 ; e < threes.length ; e += 1) {
+      cr += threes[e];
+    }
+    return reverseF(cr);
   }
   public static int commafyF(int n) {
     return n;
@@ -31,6 +41,10 @@ public class Commafier {
     return r;
   }
   public static void main(String[] args) {
-    System.out.println(commafyR(25));
+    System.out.println(commafyR(1));
+    System.out.println(commafyR(10));
+    System.out.println(commafyR(101));
+    System.out.println(commafyR(1000));
+    System.out.println(commafyR(12345));
   }
 }

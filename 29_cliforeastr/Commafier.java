@@ -16,7 +16,9 @@ public class Commafier {
     if (nToS.length() < 4) {
       return nToS;
     }else {
+      System.out.println(nr);
       for (int i = 0 ; i < nr.length() ; i += 3) {
+        System.out.println(nr.substring(i));
         if ((nr.substring(i)).length() < 3) {
           threes[ti] = nr.substring(i);
         }else {

@@ -1,0 +1,90 @@
+/*
+NIWWD: Kevin Xiao + Mr. Swag, Jeffery Tang + Mathias, Kaitlin Ho + Apple
+APCS
+HW31 -- Otnay Ybay ethay Airhay Onway Ymay Inneechay Inchay Inchay
+2021-11-03
+time spent:
+*/
+
+/*
+DISCO:
+QCC:
+*/
+
+public class Pig
+{
+  //Q: How does this initialization make your life easier?
+  private static final String VOWELS = "aeiou";
+
+
+  /*=====================================
+    boolean hasA(String,String) -- checks for a letter in a String
+    pre:  w != null, letter.length() == 1
+    post: hasA("cat", "a") -> true
+    hasA("cat", "p")       -> false
+    =====================================*/
+  public static boolean hasA( String w, String letter ) {
+		if (w.length() == 0) {
+			return false;
+		}else {
+			for (int i = 0 ; i < w.length() ; i += 1) {
+				if ((w.substring(i, i + 1)).equals(letter)) {
+					return true;
+				}
+			}
+			return false;
+		}
+	}//end hasA()
+
+
+  /*=====================================
+    boolean isAVowel(String) -- tells whether a letter is a vowel
+    precondition: letter.length() == 1
+    =====================================*/
+  public static boolean isAVowel( String letter ){
+		return hasA(VOWELS, letter);
+  }
+
+
+  /*=====================================
+    int countVowels(String) -- counts vowels in a String
+    pre:  w != null
+    post: countVowels("meatball") -> 3
+    =====================================*/
+  //public static int countVowels( String w )
+  //{
+    /* YOUR IMPLEMENTATION HERE */
+  //}
+
+
+  /*=====================================
+    boolean hasAVowel(String) -- tells whether a String has a vowel
+    pre:  w != null
+    post: hasAVowel("cat") -> true
+    hasAVowel("zzz")       -> false
+    =====================================*/
+  //public static boolean hasAVowel( String w )
+  //{
+    /* YOUR IMPLEMENTATION HERE */
+  //}
+
+
+  /*=====================================
+    String allVowels(String) -- returns vowels in a String
+    pre:  w != null
+    post: allVowels("meatball") -> "eaa"
+    =====================================*/
+  //public static String allVowels( String w )
+  //{
+    /* YOUR IMPLEMENTATION HERE */
+  //}
+
+
+  public static void main( String[] args ){
+		System.out.println(hasA("cat", "a"));
+		System.out.println(hasA("cat", "p"));
+		System.out.println(isAVowel("o"));
+		System.out.println(isAVowel("k"));
+  }//end main()
+
+}//end class Pig

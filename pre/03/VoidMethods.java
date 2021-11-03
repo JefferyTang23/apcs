@@ -1,4 +1,4 @@
-public class Void {
+public class VoidMethods {
   public static void zoop() {
     baffle();
     System.out.print("You wugga ");

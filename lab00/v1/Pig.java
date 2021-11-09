@@ -9,6 +9,10 @@ DISCOS:
 - When trying to isolate a specific character in a string using subset(), the syntax is s.subset(char, char + 1) -- NOT simply s.subset(char)
 QCCs:
 - How would our methods be different if they took in a char input rather than a String?
+TO DO LIST:
+1) Ensure there are no errors in current code.
+2) Test punctuation functionality.
+3) Create method to separate each word of a sentence to use as an input for the translator and combine outputs to creat fully translated sentence.
 */
 import java.util.Scanner;
 public class Pig {

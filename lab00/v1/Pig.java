@@ -193,7 +193,7 @@ public class Pig {
     if ( beginsWithVowel(w) ) {
       if (hasPunc(w)) {
         String p = w.substring(w.length()-1, w.length());
-        ans = w + "way" + p;
+        ans = w.substring(0, w.length()-1) + "way" + p;
       } else {
         ans = w + "way";
       }
@@ -202,7 +202,7 @@ public class Pig {
       if (hasPunc(w)) {
         String p = w.substring(w.length()-1, w.length());
         int vPos = w.indexOf( firstVowel(w) );
-        ans = w.substring(vPos) + w.substring(0,vPos) + "ay" + p;
+        ans = w.substring(vPos, w.length()-1) + w.substring(0,vPos) + "ay" + p;
       } else {
         int vPos = w.indexOf( firstVowel(w) );
         ans = w.substring(vPos) + w.substring(0,vPos) + "ay";

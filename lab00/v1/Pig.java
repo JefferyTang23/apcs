@@ -47,8 +47,6 @@ public class Pig {
 /*=====================================
   boolean hasPunc(String) -- tells whether a String contains punctuation
   pre:  w != null
-  post: hasPunc(“cat.”) -> true
-        hasPunc(“cat”) -> false
   =====================================*/
   public static boolean hasPunc( String w ) {
     for (int idx =0;idx<w.length();idx++){
@@ -193,10 +191,15 @@ public class Pig {
     String ans = "";
 
     if ( beginsWithVowel(w) ) {
-      ans = w + "way";
+      if (hasPunc(w)) {
+        String p = w.substring(w.length()-1, w.length());
+        ans = w + "way" + p;
+      } else {
+        ans = w + "way";
+      }
     }
     else {
-      if (isPunc(w)) {
+      if (hasPunc(w)) {
         String p = w.substring(w.length()-1, w.length());
         int vPos = w.indexOf( firstVowel(w) );
         ans = w.substring(vPos) + w.substring(0,vPos) + "ay" + p;

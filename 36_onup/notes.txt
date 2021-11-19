@@ -1,0 +1,70 @@
+Jeffery Tang
+APCS
+HW36 - - Debugging
+2021-11-18
+time spent: .8
+
+Compile-Time Errors
+  Spewing errors 
+    only 1st message is reliable 
+    fix 1 at a time
+  Weird message 
+    check location and common syntax errors
+  Can't compile 
+    check if editing and compiling same file 
+    debugging by bisection 
+      make backup 
+      delete code until compilable 
+  Already did what compiler said to do 
+    compiler's remedies are unreliable
+Run-Time Errors
+  Program hangs 
+    Print statements before and after loop
+    Infinite loop
+      Print variables and condition of for/while loop
+    Infinite recursion (StackOverflowError) 
+      Check if condition to return too early exists
+      Print statement at beginning of method
+    Flow of execution
+      Print statements at start of each method
+  Exception
+    Java shows name of exception, the line, and stack trace
+    NullPointerException: 
+      Invoked null object
+    ArrayIndexOutOfBoundsException: 
+      Index is negative of > array.length - 1
+    FileNotFoundException:
+      Check if path is correct and file exists
+    Arithmetic Exception:
+      Error in an arithmetic operation
+    Too many print statements
+      Remove unhelpful ones
+      Clean up code
+      Find minimal test case
+
+Logic Errors
+  Program doesn’t work
+    Check for something it should do but doesn’t
+    Check if it’s doing something it shouldn’t
+    Check for unexpected results of code
+    Brak into components
+    int of countable and double for measurable values
+    Don’t use == with double
+    Use .equals for objects
+    Check for inherited code
+  Big expression
+    Use temporary variables
+    Order of operations
+  Doesn’t return expectation 
+    Print temporary variables before returning
+  Print statement not doing anything 
+    Use println
+  Need help
+    Step away
+    Think simply
+    Give info to helper
+    “Rubbber ducking”
+  Found bug
+    Don’t understand program
+    Rethink
+    Learn about the bug and think

@@ -17,9 +17,9 @@ public class Passer {
     System.out.println("Value of h before: " + demo.h);
     demo.changeStr(demo.h);
     System.out.println("Value of h after: " + demo.h);
-    System.out.println("Value of i before: " + demo.i);
+    printArray(demo.i);
     demo.changeArr(demo.i);
-    System.out.println("Value of i after: " + demo.i);
+    printArray(demo.i);
   }
   public void change(int target) {
     target += 100;
@@ -30,4 +30,11 @@ public class Passer {
   public void changeArr(int[] target) {
     target[2] = 3;
   }
+  public static void printArray(int[] a) {
+    System.out.print("{" + a[0]);
+    for (int i = 1; i < a.length; i++) {
+        System.out.print(", " + a[i]);
+    }
+    System.out.println("}");
+}
 }

@@ -17,8 +17,10 @@ public class Passer {
     System.out.println("Value of h before: " + demo.h);
     demo.changeStr(demo.h);
     System.out.println("Value of h after: " + demo.h);
+    System.out.println("Value of i before: " + demo.i);
     printArray(demo.i);
     demo.changeArr(demo.i);
+    System.out.println("Value of i after: " + demo.i);
     printArray(demo.i);
   }
   public void change(int target) {

@@ -122,7 +122,7 @@ public class Rational
         return b;
      } else {
         return a;
-     }
+     }  
   }
   
   public void reduce() {
@@ -169,7 +169,7 @@ public class Rational
       System.out.println(r.gcd()); // Should be 1
       w.add(u);
       System.out.println(w); // should be 7/6
-      System.out.println(w.gcd()); // Should be 4
+      System.out.println(w.gcd()); // Should be 1
       s.add(v);
       System.out.println(s); // should be 1/6
       System.out.println(s.gcd()); // should be 1

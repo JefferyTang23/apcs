@@ -2,12 +2,15 @@
 Big Apples (Weichen Liu + Blueface, Jeffery Tang + Mathias, Lior + Toothless)
 APCS pd6
 HW42 -- Add/Subtract Rational
-2021-12-02
+2021-12-04
 time spent:  0.5 hours
+
 DISCO
--
+- It is good to have both a static and non-static gcd so that we use it in both cases. 
+
 QCC
--
+- What does the error "int cannot be dereferenced" mean?
+- Will we improvise add() and subtract() to return reduced sum and differences?
  *****************************************************/
 
 public class Rational
@@ -84,7 +87,28 @@ public class Rational
       System.out.println( "Div by 0 error. Values unchanged." );
     }
   }
+  
+  public void add(Rational r) 
+  { 
+    this._numerator = this._numerator * r._denominator + r._numerator * this._denominator; 
+    this._denominator = this._denominator * r._denominator;   
+  }
+  
+  public void subtract(Rational r) 
+  {  
+    this._numerator = this._numerator * r._denominator - r._numerator * this._denominator; 
+    this._denominator = this._denominator * r._denominator;   
+  }
+  
   public static int gcd(int a, int b) {
+     Rational c = new Rational(a,b);
+     return c.gcd(); 
+    
+  }
+  
+  public int gcd() {
+    int a = this._numerator;
+    int b = this._denominator; 
      while (a > 0 && b > 0){
         if (a < b){
            b = b - a;
@@ -100,15 +124,26 @@ public class Rational
         return a;
      }
   }
+  
   public void reduce() {
     int gcdr = gcd(_numerator, _denominator);
-    if (gcdr > 1) {
-      _numerator = this._numerator / gcdr;
-      _denominator = this._denominator / gcdr;
+    _numerator = this._numerator / gcdr;
+    _denominator = this._denominator / gcdr;
+  }
+  
+  public int compareTo(Rational r) {
+    Rational s = (Rational) r;
+    this.reduce();
+    s.reduce();
+    
+    if (this._numerator * s._denominator > s._numerator * this._denominator) {
+      return 1;
+    } else if (this._numerator * s._denominator < s._numerator * this._denominator) {
+      return -1;
+    } else {
+      return 0; 
     }
-    else {
-      System.out.println ("Rational already in simpliest form.")
-    }
+    
   }
 
 
@@ -120,32 +155,36 @@ public class Rational
       Rational t = new Rational( 8, 5 );
 
       Rational u = new Rational( 1, 2 );
-      Rational v = new Rational( 2, 3 );
+      Rational v = new Rational( 1, 6 );
       Rational w = new Rational( 8, 12 );
-
-      Rational x = new Rational( 8, 12 );
-      String y = "yoo";
-
-      System.out.println("r: " + r );
-      System.out.println("s: " +  s );
-      System.out.println("t: " +  t );
-
-      System.out.println( r + " as a floating pt approximation: "
-      + r.floatValue() );
-      System.out.println( s + " as a floating pt approximation: "
-      + s.floatValue() );
-      System.out.println( t + " as a floating pt approximation: "
-      + t.floatValue() );
-
-      System.out.print( r + " * " + t + " = ");
-      r.multiply(t);
-      System.out.println(r);
-
-      System.out.print( r + " / " + t + " = ");
-      r.divide(t);
-      System.out.println(r);
-    /*~~~~~v~~~~~~~~~~down~goer~3~~~~~~~~~~~~~v~~~~~
-      ~~~~~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~~~*/
+    
+      System.out.println("\nTESTING compareTo:");
+      System.out.println(w.compareTo(v)); // should be 1
+      System.out.println(v.compareTo(w)); // should be -1
+      System.out.println(u.compareTo(u)); // should be 0
+      
+      System.out.println("\nTESTING ADD:");
+      r.add(t);
+      System.out.println(r); // should be 71/35 
+      System.out.println(r.gcd()); // Should be 1
+      w.add(u);
+      System.out.println(w); // should be 7/6
+      System.out.println(w.gcd()); // Should be 4
+      s.add(v);
+      System.out.println(s); // should be 1/6
+      System.out.println(s.gcd()); // should be 1
+    
+      System.out.println("\nTESTING SUBTRACT:");
+      u.subtract(v);
+      System.out.println(u); // should be 4/12
+      w.subtract(s);
+      System.out.println(w); // should be 36/36
+    
+      System.out.println("\nTESTING REDUCE:");
+      u.reduce();
+      System.out.println(u); // should be 1/3  
+      w.reduce();
+      System.out.println(w); // should be 1/1
   }
-
 }//end class
+ 

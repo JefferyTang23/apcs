@@ -5,9 +5,9 @@ HW44 -- add, add-at-index, remove for SuperArray
 2021-12-07
 time spent:  0.5 hours
 DISCO
-- 
+-
 QCC
-- 
+-
  *****************************************************/
 
 /***************************
@@ -82,14 +82,35 @@ public class SuperArray
   //adds an item after the last item
   public void add( int newVal )
   {
-    /* YOUR IMPLEMENTATION HERE */
+    if (_size < 10) {
+      _data[_size] = newVal;
+      _size += 1;
+    }
+    else {
+      int[] newData = int[_size + 1];
+      for (int x = 0 ; x < _data.length ; x++) {
+        newData[x] = _data[x];
+      }
+      newData[_size] = newVal;
+      _size += 1;
+      _data = newData;
+    }
   }
 
 
   //inserts an item at index
   public void add( int index, int newVal )
   {
-    /* YOUR IMPLEMENTATION HERE */
+    int[] tempData = int[_size + 1];
+    for (int x = 0 ; x < index ; x++) {
+      tempData[x] = _data[x];
+    }
+    tempData[index] = newVal;
+    for (int x = index + 1 ; x < _size ; x++) {
+      tempData[x] = _data[x-1];
+    }
+    _size += 1;
+    _data = tempData;
   }
 
 

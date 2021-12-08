@@ -4,10 +4,13 @@ APCS pd6
 HW44 -- add, add-at-index, remove for SuperArray
 2021-12-07
 time spent:  0.5 hours
+
 DISCO
--
+- For curtis, we had to use an if statement to change _size so that the populated ints in the array showed.
+
 QCC
--
+- Is there a more efficient way to slice strings? 
+- Is there a more efficient way to add to strings?
  *****************************************************/
 
 /***************************
@@ -75,6 +78,10 @@ public class SuperArray
   {
     int temp = _data[index];
     _data[index] = newVal;
+    
+    if (index + 1 > _size) { // If we want to assign an index that is greater than the current _size, change the _size accordingly
+      _size = index +1; 
+    }
     return temp;
   }
 
@@ -82,32 +89,24 @@ public class SuperArray
   //adds an item after the last item
   public void add( int newVal )
   {
-    if (_size < 10) {
-      _data[_size] = newVal;
-      _size += 1;
+    if (_size == _data.length - 1){ 
+      expand(); // expand if we are close to needing more indexes
     }
-    else {
-      int[] newData = int[_size + 1];
-      for (int x = 0 ; x < _data.length ; x++) {
-        newData[x] = _data[x];
-      }
-      newData[_size] = newVal;
-      _size += 1;
-      _data = newData;
-    }
+    set(_size, newVal);
   }
 
 
   //inserts an item at index
   public void add( int index, int newVal )
   {
-    int[] tempData = int[_size + 1];
+    int[] tempData = new int[_size + 1];
     for (int x = 0 ; x < index ; x++) {
       tempData[x] = _data[x];
     }
     tempData[index] = newVal;
-    for (int x = index + 1 ; x < _size ; x++) {
-      tempData[x] = _data[x-1];
+    
+    for (int x = index + 1 ; x < _size + 1; x++) {
+      tempData[x] = _data[x - 1];
     }
     _size += 1;
     _data = tempData;
@@ -118,14 +117,24 @@ public class SuperArray
   //shifts elements left to fill in newly-empted slot
   public void remove( int index )
   {
-    /* YOUR IMPLEMENTATION HERE */
+    int[] tempData = new int[_size - 1];
+    
+    for (int x = 0 ; x < index ; x++) {
+      tempData[x] = _data[x];
+    }
+    
+    for (int x = index ; x < _size - 1; x++) {
+      tempData[x] = _data[x + 1];
+    }
+    _size -= 1;
+    _data = tempData;
   }
 
 
   //return number of meaningful items in _data
   public int size()
   {
-    /* YOUR IMPLEMENTATION HERE */
+    return _size; 
   }
 
 
@@ -133,7 +142,6 @@ public class SuperArray
   //main method for testing
   public static void main( String[] args )
   {
-    /*~~~~~~~~move~me~down~~~~~~~~~~~~~~V~~~~~~~~
       SuperArray curtis = new SuperArray();
       System.out.println( "Printing empty SuperArray curtis..." );
       System.out.println( curtis );
@@ -174,6 +182,7 @@ public class SuperArray
       mayfield.add(1,77);
       System.out.println("Printing SuperArray mayfield post-insert...");
       System.out.println(mayfield);
+        /*~~~~~~~~move~me~down~~~~~~~~~~~~~~V~~~~~~~~
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~~~~~~*/
   }//end main()
 

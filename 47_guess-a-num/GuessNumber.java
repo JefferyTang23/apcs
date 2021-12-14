@@ -5,9 +5,10 @@ HW47 -- Guess Number Game
 2021-12-14
 time spent:  0.5 hours
 DISCO
--
+- You can return nothing in a method of type void. 
+- If a guess was too low, the _lo is replaced by guess +1 and if the guess was too high, the _hi was replaced by guess - 1. 
 QCC
--
+- When would using break be better than returning nothing?
  *****************************************************/
 
 /***
@@ -36,7 +37,6 @@ public class GuessNumber
 
   //instance vars
   private int _lo, _hi, _guessCtr, _target;
-  private String success = "Correct! It took " + _guessCtr + "guesses";
   Scanner sc = new Scanner( System.in );
 
 
@@ -51,12 +51,8 @@ public class GuessNumber
     _lo = Math.min(a,b);
     _hi = Math.max(a,b);
     _guessCtr = 1;
-    _target = (int) (Math.random()*_hi)+1;
-
-
     //pick random number in range [a,b]
-
-    /* YOUR CODE HERE */
+    _target = (int) (Math.random()*(_hi+1) + a);
   }
 
 
@@ -76,16 +72,23 @@ public class GuessNumber
     else {
       if (guess > _target) {
         System.out.println("Too high");
-        _hi = guess - 1;
+        if ( guess > _hi) {
+            System.out.println("YOUR GUESS IS OUTSIDE OF RANGE. PLEASE GUESS AGAIN!");
+        } else {
+            _hi = guess - 1; 
+        }
       }
       else {
         System.out.println("Too low");
-        _lo = guess + 1;
+        if ( guess < _lo) {
+            System.out.println("YOUR GUESS IS OUTSIDE OF RANGE. PLEASE GUESS AGAIN!");
+        } else {
+            _lo = guess + 1; 
+        }
       }
       _guessCtr += 1;
       playRec();
     }
-    /* YOUR CODE HERE */
   }
 
 
@@ -104,20 +107,27 @@ public class GuessNumber
 
       //3 cases: we either found it, too hi, too lo
       if (guess == _target) {
-        break;
+        System.out.println("Correct! It took " + _guessCtr + " guesses");
+        return;
       }
       else {
         if (guess > _target) {
-          System.out.println("Too high");
-          _hi = _target - 1;
+          if ( guess > _hi) {
+              System.out.println("YOUR GUESS IS OUTSIDE OF RANGE. PLEASE GUESS AGAIN!");
+          } else {
+                _hi = guess - 1; 
+          }
         }
         else {
           System.out.println("Too low");
-          _lo = _target + 1;
+          if ( guess < _lo) {
+              System.out.println("YOUR GUESS IS OUTSIDE OF RANGE. PLEASE GUESS AGAIN!");
+          } else {
+              _lo = guess + 1; 
+          }
         }
         _guessCtr++;
     }
-    System.out.println("Correct! It took " + _guessCtr + " guesses");
   }
 }
 
@@ -126,8 +136,8 @@ public class GuessNumber
   public void play()
   {
     //use one or the other below:
-    //playRec();
-    playIter();
+    playRec();
+    //playIter();
   }
 
 

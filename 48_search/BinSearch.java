@@ -5,9 +5,9 @@ HW48 -- Linear & Binary Search
 2021-12-15
 time spent:  0.5 hours
 DISCO
--
+- We should use compareTo method to compare the elements on the list. 
 QCC
--
+- What is an unchecked call?
  *****************************************************/
 
 /**
@@ -28,8 +28,8 @@ public class BinSearch
   {
     //uncomment exactly 1 of the 2 stmts below:
 
-    return binSearchIter( a, target, 0, a.length-1 );
-    //return binSearchRec( a, target, 0, a.length-1 );
+    //return binSearchIter( a, target, 0, a.length-1 );
+    return binSearchRec( a, target, 0, a.length-1 );
   }
 
 
@@ -42,9 +42,23 @@ public class BinSearch
 
     int m = (lo + hi) / 2; //init mid pos var
 
+    if (lo > hi){ // checks if value not found
+      return tPos;
+    }
 
+    if (a[m].equals(target)){
+      tPos = m;
+      return tPos;
+    }
+    else if (a[m].compareTo(target) > 0){
+      hi = m - 1;
+      tPos = binSearchRec(a, target, lo, hi);
+    }
+    else{
+      lo = m + 1;
+      tPos = binSearchRec(a, target, lo, hi);
+    }
 
-    return tPos;
   }//end binSearchRec
 
 
@@ -56,15 +70,23 @@ public class BinSearch
     int tPos = -1; //init return var to flag value -1
     int m = (lo + hi) / 2; //init mid pos var
 
-    while( /* ? */ ) { // run until lo & hi cross
+    while( lo <= hi ) { // run until lo & hi cross
 
       //update mid pos var
-
+      m = (lo + hi) / 2;
       // target found
-
+      if (a[m].equals(target)){
+          tPos = m;
+          break;
+      }
       // value at mid index higher than target
-
+      else if (a[m].compareTo(target) > 0){
+        hi = m - 1;
+      }
       // value at mid index lower than target
+      else{
+        lo = m + 1;
+      }
 
     }
     return tPos;
@@ -79,6 +101,7 @@ public class BinSearch
     boolean retBoo = true; //init to true, assume array is sorted
 
     //Q: Why would a FOREACH loop not suffice here?
+    // A foreach loop is incapable of referencing the value of the element one index greater than it.
     for( int i=0; i < arr.length-1; i++ ) {
       if ( ( arr[i].compareTo(arr[i+1]) > 0 ) ) {
         return false;
@@ -107,7 +130,6 @@ public class BinSearch
   public static void main ( String[] args )
   {
 
-    /*----------------------------------------------------
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     System.out.println("\nNow testing binSearch on Comparable array...");
@@ -127,7 +149,7 @@ public class BinSearch
     }
 
     printArray( iArr3 );
-    System.out.println( "iArr3 sorted? -- " + isSorted(iArr2) );
+    System.out.println( "iArr3 sorted? -- " + isSorted(iArr3) );
 
     //search for 6 in array
     System.out.println( binSearch(iArr2,2) );
@@ -147,8 +169,6 @@ public class BinSearch
 
     //search for 43 in array
     System.out.println( binSearch(iArr3,43) );
-    ====================================================*/
-
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -5,9 +5,9 @@ HW48 -- Linear & Binary Search
 2021-12-15
 time spent:  0.5 hours
 DISCO
--
+- We should use compareTo method to compare the elements on the list. 
 QCC
--
+- What is an unchecked call?
  *****************************************************/
 
 /**
@@ -29,7 +29,7 @@ public class LinSearch
     int i = 0;
 
     while ( i < a.length ) {
-      if (target == a[i]) {
+      if (target.equals(a[i])) {
         tPos = i;
         break;
       }

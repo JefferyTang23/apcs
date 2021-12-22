@@ -1,16 +1,15 @@
 /*****************************************************
 Big Apples (Weichen Liu + Blueface, Jeffery Tang + Mathias, Lior + Toothless)
 APCS pd6
-HW42 -- Add/Subtract Rational
-2021-12-04
+HW49 -- Java Conventions
+2021-12-22
 time spent:  0.5 hours
 
 DISCO
-- It is good to have both a static and non-static gcd so that we use it in both cases.
+-
 
 QCC
-- What does the error "int cannot be dereferenced" mean?
-- Will we improvise add() and subtract() to return reduced sum and differences?
+-
  *****************************************************/
 
 public class Rational
@@ -131,7 +130,7 @@ public class Rational
     _denominator = this._denominator / gcdr;
   }
 
-  public int compareTo(Rational r) {
+  public int compareTo(Object r) {
     Rational s = (Rational) r;
     this.reduce();
     s.reduce();
@@ -150,7 +149,7 @@ public class Rational
   //main method for testing
   public static void main( String[] args )
   {
-      Rational r = new Rational( 3, 7 );
+      Rational r = new Rational(3, 7 );
       Rational s = new Rational();
       Rational t = new Rational( 8, 5 );
 
@@ -158,6 +157,7 @@ public class Rational
       Rational v = new Rational( 1, 6 );
       Rational w = new Rational( 8, 12 );
 
+      System.out.println((r) instanceof Rational);
       System.out.println("\nTESTING compareTo:");
       System.out.println(w.compareTo(v)); // should be 1
       System.out.println(v.compareTo(w)); // should be -1

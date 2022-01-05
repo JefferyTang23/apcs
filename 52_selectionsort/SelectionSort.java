@@ -2,7 +2,7 @@
 // APCS pd6
 // HW52 -- implementing selection sort
 // 2022-01-05w
-// time spent:  hrs
+// time spent: .5 hrs
 
 /******************************
  *   class SelectionSort -- implements SelectionSort algorithm
@@ -65,19 +65,21 @@ public class SelectionSort
     //note: this version places greatest value at "rightmost" end
 
     //maxPos will point to position of SELECTION (greatest value)
-    int maxPos = data.length;
-    for( int x = 0 ; x < maxPos-1 ; x++) {
+    int maxPos = 0;
+    for( int x = 0 ; x < data.size()-1 ; x += 1) {
       System.out.println( "\nbegin pass " + (data.size()-pass) );//diag
 
 
-      for(  ) {
+      for( int y = 0 ; y <= data.size() - x ; y += 1 ) {
         System.out.println( "maxPos: " + maxPos );//diag
         System.out.println( data );//diag
-
-
+        if ( (data.get(maxPos)).compareTo(data.get(y)) < 0 ) {
+          maxPos = y;
+        }
       }
-
-
+      Comparable t = data.get(data.size()-pass);
+      data.set(data.size()-pass, data.get(maxPos));
+      data.set(maxPos, t);
       System.out.println( "after swap: " +  data );//diag
     }
   }//end selectionSort

@@ -70,14 +70,14 @@ public class InsertionSort
 
 
       //traverse sorted region from right to left
-      System.out.println(partition -1);
+      //System.out.println(partition -1);
       for( int index = partition - 1 ; index >= 0; index-- ) {
 
         // "walk" the current item to where it belongs
         // by swapping adjacent items
-        System.out.println(index);
-        System.out.println(partition);
-        System.out.println(data.size());
+        //System.out.println(index);
+        //System.out.println(partition);
+        //System.out.println(data.size());
         if ( data.get(index).compareTo(data.get(index + 1)) > 0) {
 
           System.out.println( "swap indices "+(index+1)+" & "+index+"..." ); //diag

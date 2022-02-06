@@ -1,8 +1,8 @@
-// Clyde "Thluffy" Sinclair
-// APCS pd0
+// IDC (Vansh Saboo, May Qiu, Jeffery Tang)
+// APCS pd6
 // L05 -- pulling it together
 // 2022-02-03r
-// time spent:  hrs
+// time spent: 2 hrs
 
 
 /**
@@ -59,7 +59,6 @@
     //  _frequency would be [0,0,3,2,0,1]
     public StatPrinter( ArrayList <Integer> data )
     {
-  
       _frequency = new ArrayList<Integer>();
       for(int i=0; i< max(data)+1; i++){
         _frequency.add(0); // O(n) time to add all of the empty indexes
@@ -115,7 +114,9 @@
        ArrayList<Integer> localModes = new ArrayList<Integer>();
        // O(n) time, since you iterate through the entire frequency list once
        for(int i = 0; i < _frequency.size(); i++){
-         if(isLocalMode(i)) {localModes.add(i); }
+         if(isLocalMode(i)) {
+             localModes.add(i);
+            }
        }
        return localModes;
     }

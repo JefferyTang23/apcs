@@ -1,9 +1,8 @@
-// IDC (Vansh Saboo, May Qiu, Jeffery Tang)
+// Team IDC (Vansh Saboo, May Qiu, Jeffery Tang)
 // APCS pd6
 // L05 -- pulling it together
 // 2022-02-03r
 // time spent: 2 hrs
-
 
 /**
    An AP-style question, for practice...
@@ -132,7 +131,6 @@
       for(int i = 0; i < _frequency.size(); i++){
         System.out.println(i + " : " + "*".repeat(_frequency.get(i) * longestBar / max(_frequency) ) );
       }
-      /* YOUR IMPLEMENTATION HERE */
     }
   
   }//end class StatPrinter

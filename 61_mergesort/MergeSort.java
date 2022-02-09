@@ -1,3 +1,10 @@
+/*
+Paul Serbanescu + Jeffery Tang
+APCS
+HW61--Instructions so Simple...
+2022-02-08
+time spent: .8 hrs
+*/
 /***
   class MergeSort
   Implements mergesort on array of ints.
@@ -21,33 +28,27 @@ public class MergeSort
     int bLength = b.length;
     int aIndex = 0;
     int bIndex = 0;
-    int rIndex = 0;
     int[] result = new int[aLength+bLength];
-    while (aLength > 0 && bLength > 0) {
-      if (a[aIndex] <= b[bIndex] ) {
-        result[rIndex] = a[aIndex];
-        System.out.println(a[aIndex]);
-        aIndex += 1;
-        rIndex += 1;
-        aLength -= 1;
-
+    for (int i = 0 ; i < result.length ; i++) {
+      if (aIndex < aLength && bIndex < bLength) {
+        if (a[aIndex] <= b[bIndex] ) {
+          result[i] = a[aIndex];
+          aIndex += 1;
+        }
+        else {
+          result[i] = b[bIndex];
+          bIndex += 1;
+        }
       }
-
-      else {
-        result[rIndex] = b[bIndex];
-        System.out.println(b[bIndex]);
-        bIndex += 1;
-        rIndex += 1;
-        bLength -= 1;
+      else if (aIndex == aLength && bLength > 0) {
+          result[i] = b[bIndex];
+          bIndex += 1;
+        }
+      else if (bIndex == bLength && aLength > 0) {
+          result[i] = a[aIndex];
+          aIndex += 1;
+        }
       }
-    }
-    if (aLength == 0 && bLength > 0) {
-      for (int x = 0 ; x < bLength ; x++) {
-        result[rIndex] = b[bIndex];
-        bIndex += 1;
-        rIndex += 1;
-      }
-    }
     return result;
   }//end merge()
 
@@ -57,10 +58,23 @@ public class MergeSort
    * Sorts input array using mergesort algorithm
    * Returns sorted version of input array (ascending)
    ******************************************************/
-  // public static int[] sort( int[] arr )
-  // {
-  //   return 1;
-  // }//end sort()
+  public static int[] sort( int[] arr )
+  {
+    if (arr.length == 1) {
+      return arr;
+    }
+    int halfALength = arr.length / 2;
+    int halfBLength = arr.length - halfALength;
+    int[] halfA = new int[halfALength];
+    int[] halfB = new int[halfBLength];
+    for (int i = 0 ; i < halfA.length ; i++) {
+      halfA[i] = arr[i];
+    }
+    for (int i = 0 ; i < halfB.length ; i++) {
+      halfB[i] = arr[halfALength + i];
+    }
+    return (merge(sort(halfA), sort(halfB)));
+  }//end sort()
 
 
 
@@ -104,13 +118,13 @@ public class MergeSort
 
       System.out.println("\nMerging arr4 and arr6: ");
       printArray( merge(arr4,arr6) );
-      /*~~~~~~~~~~~~~~ Ye Olde Tester Bar ~~~~~~~~~~~~~~
 
       System.out.println("\nSorting arr4-7...");
       printArray( sort( arr4 ) );
       printArray( sort( arr5 ) );
       printArray( sort( arr6 ) );
       printArray( sort( arr7 ) );
+      /*~~~~~~~~~~~~~~ Ye Olde Tester Bar ~~~~~~~~~~~~~~
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
 

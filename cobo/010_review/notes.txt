@@ -1,0 +1,19 @@
+Activity 1
+
+1a) public static double sentimentVal( String word )
+1b) The method requires a String parameter. The class will fail to compile
+if one attempts to pass an incompatible parameter type.
+1c) The method returns a double value.
+
+3a) Yes, sentimentVal returns a double and takes a String parameter.
+3b) No, sentimentVal is incompatible with a float/double parameter
+and does not return a String.
+3c) No, sentimentVal takes a single String parameter.
+
+Activity 2
+6) There are errors with the if conditions because any totalSentiment
+value will return 4 regardless of if it is less than 10 or 5 or 0. In
+addition, 0 will be returned for any totalSentiment value greater than or equal to
+15. This can be fixed by returning 5 if the value is greater than or equal
+to 15 and creating ranges for other ratings
+(e.g. (else if (totalSentiment < 15.0 && totalSentiment >= 10.0)))

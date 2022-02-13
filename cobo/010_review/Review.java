@@ -38,7 +38,7 @@ public class Review {
       while(input.hasNextLine()){
         String temp = input.nextLine().trim();
         System.out.println(temp);
-        posAdjectives.add(temp);
+        posAdjectives.add(temp.toLowerCase());
       }
       input.close();
     }
@@ -50,7 +50,7 @@ public class Review {
      try {
       Scanner input = new Scanner(new File("negativeAdjectives.txt"));
       while(input.hasNextLine()){
-        negAdjectives.add(input.nextLine().trim());
+        negAdjectives.add(input.nextLine().trim().toLowerCase());
       }
       input.close();
     }
@@ -98,16 +98,39 @@ public class Review {
     }
   }
 
-  public static double totalSentiment(String fileName) {
-    String reviewText = textToString(fileName);
-    String[] reviewWords = reviewText.split(" ");
-    double total = 0.0;
-    for (int i = 0; i < reviewWords.length ; i++) {
-      total += sentimentVal(reviewWords[i]);
-    }
-    return total;
+  public static void sentimentValTester( String a, String b, String c){
+    System.out.println(sentimentVal(a));
+    System.out.println(sentimentVal(b));
+    System.out.println(sentimentVal(c));
   }
 
+  public static double totalSentiment(String fileName){
+    String review = textToString(fileName);
+    String[] reviewArray = review.split(" ");
+    double answer = 0.0;
+    for(int i = 0; i < reviewArray.length; i++){
+      answer += sentimentVal(reviewArray[i]);
+    }
+    return answer;
+  }
+
+  public static int starRating(String fileName){
+    if(totalSentiment(fileName) > 30) {
+      return 4;
+    }
+    else if(totalSentiment(fileName) > 20){
+      return 3;
+    }
+    else if(totalSentiment(fileName) > 10){
+      return 2;
+    }
+    else if(totalSentiment(fileName) > 0){
+      return 1;
+    }
+    else{
+      return 0;
+    }
+  }
   /**
    * Returns the ending punctuation of a string, or the empty string if there is none
    */
@@ -157,7 +180,6 @@ public class Review {
   {
     int index = (int)(Math.random() * negAdjectives.size());
     return negAdjectives.get(index);
-
   }
 
   /**
@@ -173,28 +195,27 @@ public class Review {
     }
   }
 
-  public static int starRating(String fileName) {
-    double score = totalSentiment(fileName);
-    if (score >= 15.0) {
-      return 5;
-    } else if (score < 15.0 && score >= 10.0) {
-      return 4;
-    } else if (score < 10.0 && score >= 5.0) {
-      return 3;
-    } else if (score < 5.0 && score >= 0.0) {
-      return 2;
-    } else if (score < 0.0 && score >= -5.0) {
-      return 1;
-    } else {
-      return 0;
+  public static String fakeReview(String fileName) {
+    String review = textToString(fileName);
+    String[] words = review.split(" ");
+    String ans = "";
+    for (int i = 0; i < words.length; i++) {
+      if (words[i].charAt(0) == '*') {
+        while (sentimentVal(words[i]) > -.5 && sentimentVal(words[i]) < .5) {
+          words[i] = randomAdjective();
+        }
+      }
+      ans += words[i] + " ";
     }
+    return ans;
   }
-  public static void main(String[] args){
-    //System.out.println(sentimentVal(4));
-    System.out.println(sentimentVal("happily"));
-    System.out.println(sentimentVal("terrible"));
-    System.out.println(sentimentVal("cold"));
-    System.out.println(totalSentiment("SimpleReview.txt"));
-    System.out.println(starRating("SimpleReview.txt"));
+
+  public static void main(String[] args) {
+    System.out.println("Testing sentimentValTester: ");
+    sentimentValTester("accidental", "account", "acceptable");
+    System.out.println("Testing totalSentiment: " + totalSentiment("SimpleReview.txt"));
+    System.out.println("Testing starRating: " + starRating("cleanSentiment.csv"));
+
+    System.out.println("Testing fakeReview: " + fakeReview("SimpleReview.txt"));
   }
 }

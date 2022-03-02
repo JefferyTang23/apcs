@@ -70,8 +70,8 @@ public class KnightTour
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //for random starting location, use lines below:
-    //int startX = int ((math.random()*n)-1);
-    //int startY = int ((math.random()*n)-1);
+    //int startX = int (2 + (math.random()*n));
+    //int startY = int (2 + (math.random()*n));
     //tf.findTour( startX, startY, 1 );   // 1 or 0 ?
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

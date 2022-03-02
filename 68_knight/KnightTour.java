@@ -86,12 +86,14 @@ class TourFinder
   //instance vars
   private int[][] _board;
   private int _sideLength; //board has dimensions n x n
+  private int _boardLength;
   private boolean _solved = false;
 
   //constructor -- build board of size n x n
   public TourFinder( int n )
   {
     _sideLength = n + 4;
+    _boardLength = n;
 
     //init 2D array to represent square board with moat
     _board = new int[_sideLength][_sideLength];
@@ -101,7 +103,7 @@ class TourFinder
     //---------------------------------------------------------
     for (int row = 0; row < _sideLength; row++) {
       for (int col = 0; col < _sideLength; col++) {
-        if (row <= 1) || (row >= _sideLength - 2) || (col <= 1) || (col >= _sideLength - 2) {
+        if ((row <= 1) || (row >= _sideLength - 2) || (col <= 1) || (col >= _sideLength - 2)) {
           _board[row][col] = -1;
         } else {
           _board[row][col] = 0;
@@ -124,8 +126,8 @@ class TourFinder
     //emacs shortcut: M-x quoted-insert, then press ESC
 
     int i, j;
-    for( i=0; i < _sideLength+4; i++ ) {
-      for( j=0; j < _sideLength+4; j++ )
+    for( i=0; i < _boardLength+4; i++ ) {
+      for( j=0; j < _boardLength+4; j++ )
         retStr = retStr + String.format( "%3d", _board[j][i] );
       //"%3d" allots 3 spaces for each number
       retStr = retStr + "\n";
@@ -163,7 +165,7 @@ class TourFinder
     if ( _solved == true ) System.exit(0);
 
     //primary base case: tour completed
-    if ( moves = n*n - 1 ) {
+    if ( moves == _boardLength * _boardLength - 1 ) {
       _solved = true;
       System.out.println( this ); //refresh screen
       return;

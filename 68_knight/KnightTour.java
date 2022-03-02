@@ -3,7 +3,7 @@ IDK (Paul Serbanescu, May Qiu, Jeffery Tang)
 APCS
 HW68 -- Knight Tour Code
 2022-03-01
-time spent: .5 hrs
+time spent: 1 hrs
 */
 
 /***
@@ -17,16 +17,20 @@ time spent: .5 hrs
  * $ java KnightTour [N]
  *
  * ALGO
- *
+ * Knight starts at a space and moves either vertically by 2 and horizontally by 1 or
+ vertically by 1 and horizontally by 2 until the value of the current space is equal
+ to 1 less than the number of spaces
+ * Set current space to 0 and back up to previous position if all paths lead to failure.
  * DISCO
- *
+ * KnightTour on a 4x4 board is not possible
+ * Times are very close when executing on a board of the same size
  * QCC
- *
+ * What would the Big O notation be for KnightTour?
  * Mean execution times for boards of size n*n:
- * n=5   __s    across __ executions
- * n=6   __s    across __ executions
- * n=7   __s    across __ executions
- * n=8   __s    across __ executions
+ * n=5   8.124s    across 3 executions
+ * n=6   291.588s    across 3 executions
+ * n=7   N/As    across N/A executions
+ * n=8   N/As    across N/A executions
  *
  * POSIX PROTIP: to measure execution time from BASH, use time program:
  * $ time java KnightTour 5
@@ -86,24 +90,22 @@ class TourFinder
   //instance vars
   private int[][] _board;
   private int _sideLength; //board has dimensions n x n
-  private int _boardLength;
   private boolean _solved = false;
 
   //constructor -- build board of size n x n
   public TourFinder( int n )
   {
-    _sideLength = n + 4;
-    _boardLength = n;
+    _sideLength = n;
 
     //init 2D array to represent square board with moat
-    _board = new int[_sideLength][_sideLength];
+    _board = new int[_sideLength + 4][_sideLength + 4];
 
     //SETUP BOARD --  0 for unvisited cell
     //               -1 for cell in moat
     //---------------------------------------------------------
-    for (int row = 0; row < _sideLength; row++) {
-      for (int col = 0; col < _sideLength; col++) {
-        if ((row <= 1) || (row >= _sideLength - 2) || (col <= 1) || (col >= _sideLength - 2)) {
+    for (int row = 0; row < _board.length; row++) {
+      for (int col = 0; col < _board.length; col++) {
+        if ((row <= 1) || (row >= _board.length - 2) || (col <= 1) || (col >= _board.length - 2)) {
           _board[row][col] = -1;
         } else {
           _board[row][col] = 0;
@@ -126,8 +128,8 @@ class TourFinder
     //emacs shortcut: M-x quoted-insert, then press ESC
 
     int i, j;
-    for( i=0; i < _boardLength+4; i++ ) {
-      for( j=0; j < _boardLength+4; j++ )
+    for( i=0; i < _sideLength+4; i++ ) {
+      for( j=0; j < _sideLength+4; j++ )
         retStr = retStr + String.format( "%3d", _board[j][i] );
       //"%3d" allots 3 spaces for each number
       retStr = retStr + "\n";
@@ -162,10 +164,10 @@ class TourFinder
     //delay(50); //slow it down enough to be followable
 
     //if a tour has been completed, stop animation
-    if ( _solved == true ) System.exit(0);
+    if ( _solved ) System.exit(0);
 
     //primary base case: tour completed
-    if ( moves == _boardLength * _boardLength - 1 ) {
+    if ( moves == _sideLength * _sideLength + 1 ) {
       _solved = true;
       System.out.println( this ); //refresh screen
       return;
@@ -183,7 +185,7 @@ class TourFinder
 
       System.out.println( this ); //refresh screen
 
-      //delay(1000); //uncomment to slow down enough to view
+      // delay(10); //uncomment to slow down enough to view
 
       /******************************************
        * Recursively try to "solve" (find a tour) from

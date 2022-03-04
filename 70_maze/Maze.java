@@ -1,6 +1,6 @@
-// Clyde Sinclair
-// APCS pd0
-// HW69 -- maze solving (blind, depth-first)
+// Twang (Jeffery Tang, Ruiwen "Raven" Tang, Brian Wang)
+// APCS pd6
+// HW70 -- maze solving (blind, depth-first)
 // 2022-03-03r
 // time spent:  hrs
 
@@ -9,18 +9,24 @@
  * class MazeSolver
  * Implements a blind depth-first exit-finding algorithm.
  * Displays probing in terminal.
- * 
- * USAGE: 
+ *
+ * USAGE:
  * $ java Maze [path/to/mazefile]
  * (mazefile is ASCII representation of a maze, using symbols below)
  *
  * ALGORITHM for finding exit from starting position:
- *  <INSERT YOUR SUMMARY OF ALGO HERE>
+ * 1. Evaluate your neighbors. Identify those that have not been visited and that are not barriers. Out of these available positions, take the first option clockwise from the top.
+ * 2. Mark your new position as visited.
+ * 3. Repeat steps 1-2 for as long as there are available positions or until you solve the maze.
+ * 4. a) If you have reached the end of the maze, you’re done!
+ *    b) If there are no more available positions (dead end), return to the previous visited square. Repeat this substep until you’ve reached a square with at least one unvisited and non-barrier adjacent square. Repeat steps 1-3 from this square.
+ * 4. If all possible tiles have been visited and no solution has been reached, the maze is impossible.
+ *
  *
  * DISCO
- * 
+ *
  * QCC
- * 
+ *
  ***/
 
 //enable file I/O
@@ -151,7 +157,7 @@ class MazeSolver
 
   //accessor method to help with randomized drop-in location
   public boolean onPath( int x, int y) {
-      
+
   }
 
 }//end class MazeSolver

@@ -1,33 +1,36 @@
-// Twang (Jeffery Tang, Ruiwen "Raven" Tang, Brian Wang)
-// APCS pd6
-// HW70 -- maze solving (blind, depth-first)
-// 2022-03-03r
-// time spent:  hrs
+// Twang: Jeffery Tang, Brian Wang, Raven (Ruiwen) Tang
+// APCS pd06
+// HW70 -- Thinkers of the Corn / maze solving (blind, depth-first)
+// 2022-03-03
+// time spent: 00.5 hrs
 
 /***
- * SKEELTON for
- * class MazeSolver
- * Implements a blind depth-first exit-finding algorithm.
- * Displays probing in terminal.
- *
- * USAGE:
- * $ java Maze [path/to/mazefile]
- * (mazefile is ASCII representation of a maze, using symbols below)
- *
- * ALGORITHM for finding exit from starting position:
- * 1. Evaluate your neighbors. Identify those that have not been visited and that are not barriers. Out of these available positions, take the first option clockwise from the top.
- * 2. Mark your new position as visited.
- * 3. Repeat steps 1-2 for as long as there are available positions or until you solve the maze.
- * 4. a) If you have reached the end of the maze, you’re done!
- *    b) If there are no more available positions (dead end), return to the previous visited square. Repeat this substep until you’ve reached a square with at least one unvisited and non-barrier adjacent square. Repeat steps 1-3 from this square.
- * 4. If all possible tiles have been visited and no solution has been reached, the maze is impossible.
- *
- *
- * DISCO
- *
- * QCC
- *
- ***/
+* SKEELTON for
+* class MazeSolver
+* Implements a blind depth-first exit-finding algorithm.
+* Displays probing in terminal.
+*
+* USAGE:
+* $ java Maze [path/to/mazefile]
+* (mazefile is ASCII representation of a maze, using symbols below)
+*
+* ALGORITHM for finding exit from starting position:
+*
+* 1) Check if your current position is an exit, a valid path, or another feature.
+* 2a) If it is an exit, mark it as hero, and you’re done. End the program.
+* 2b) If it is a valid path, mark it as hero. Starting from the top neighbor and progressing in the clockwise direction, repeat this algorithm from step 1.
+* 2c) If the current position is another feature, it  does not lead to a solution. End this possibility.
+* 3) If you’ve reached this step, meaning none of the attempts in 2b resulted in a valid path, mark the current position as visited.
+*
+* DISCO
+* Multiple classes can be in one file. Here, we have MazeSolver and Maze in the same file, and the file is named Maze.java. This organization makes sense because we would like to compile and execute Maze, as it is the class which contains the main method of interest.
+* The algorithm for solving the maze is very similar to a knight tour, in that we call the solve method for all the neighbors without first checking if those neighbors are valid paths. This property will be checked within the next method.
+* We don’t have to explicitly check if positions are WALL or VISITED_PATH. These both fall into the “other” category in that we simply recognize that the attempted path is a failed possibility if we run into either of these.
+* QCC
+* What if we put the random start into the solver, so as to bypass needing an accessor to acces h and w of the maze?
+* Is there another way to do this without the need of accessors for the random start?
+* Should we put a "default maze" like the default 8x8 board in the knight's tour?
+***/
 
 //enable file I/O
 import java.io.*;
@@ -36,7 +39,7 @@ import java.util.*;
 
 class MazeSolver
 {
-  final private int FRAME_DELAY = 50;
+  final private int FRAME_DELAY = 100;
 
   private char[][] _maze;
   private int h, w; // height, width of maze
@@ -71,17 +74,17 @@ class MazeSolver
         String line = sc.nextLine();
 
         if ( w < line.length() )
-          w = line.length();
+        w = line.length();
 
         for( int i=0; i<line.length(); i++ )
-          _maze[i][row] = line.charAt( i );
+        _maze[i][row] = line.charAt( i );
 
         h++;
         row++;
       }
 
       for( int i=0; i<w; i++ )
-        _maze[i][row] = WALL;
+      _maze[i][row] = WALL;
       h++;
       row++;
 
@@ -93,8 +96,8 @@ class MazeSolver
 
 
   /**
-   * "stringify" the board
-   **/
+  * "stringify" the board
+  **/
   public String toString()
   {
     //send ANSI code "ESC[0;0H" to place cursor in upper left
@@ -105,7 +108,7 @@ class MazeSolver
     int i, j;
     for( i=0; i<h; i++ ) {
       for( j=0; j<w; j++ )
-        retStr = retStr + _maze[j][i];
+      retStr = retStr + _maze[j][i];
       retStr = retStr + "\n";
     }
     return retStr;
@@ -113,9 +116,9 @@ class MazeSolver
 
 
   /**
-   * helper method to keep try/catch clutter out of main flow
-   * @param n      delay in ms
-   **/
+  * helper method to keep try/catch clutter out of main flow
+  * @param n      delay in ms
+  **/
   private void delay( int n )
   {
     try {
@@ -127,38 +130,62 @@ class MazeSolver
 
 
   /**
-   * void solve(int x,int y) -- recursively finds maze exit (depth-first)
-   * @param x starting x-coord, measured from left
-   * @param y starting y-coord, measured from top
-   **/
+  * void solve(int x,int y) -- recursively finds maze exit (depth-first)
+  * @param x starting x-coord, measured from left
+  * @param y starting y-coord, measured from top
+  **/
   public void solve( int x, int y )
   {
     delay( FRAME_DELAY ); //slow it down enough to be followable
 
     //primary base case
-    if ( ??? ) {
-	???
+    if ( _maze[x][y] == EXIT ) {
+      _maze[x][y] = HERO;
+      System.out.println( this );
+      _solved = true;
+
+      System.exit(0);
+
     }
     //other base cases
-    else if ( ??? ) {
-	???
-      return;
+    else if ( _maze[x][y] == PATH) {
+      _maze[x][y] = HERO;
+      solve(x, y-1);
+      solve(x+1, y);
+      solve(x, y+1);
+      solve(x-1, y);
+      if(_maze[x][y] == HERO){
+        _maze[x][y] = VISITED_PATH;
+      }
+
     }
-    //otherwise, recursively solve maze from next pos over,
-    //after marking current location
-    else {
-	???
-      System.out.println( this ); //refresh screen
 
-???
-      System.out.println( this ); //refresh screen
-    }
+  //otherwise, recursively solve maze from next pos over,
+  //after marking current location
+  else {
+
+    System.out.println( this ); //refresh screen
+    return;
   }
+}
 
-  //accessor method to help with randomized drop-in location
-  public boolean onPath( int x, int y) {
-
+//accessor method to help with randomized drop-in location
+public boolean onPath( int x, int y) {
+  if(x > w){
+    return false;
   }
+  if(y > h){
+    return false;
+  }
+  return (_maze[x][y] == PATH || _maze[x][y] == EXIT);
+}
+
+public int retw(){
+  return w;
+}
+public int reth(){
+  return h;
+}
 
 }//end class MazeSolver
 
@@ -188,13 +215,20 @@ public class Maze
 
     //drop hero into the maze (coords must be on path)
     // ThinkerTODO: comment next line out when ready to randomize startpos
-    ms.solve( 4, 3 );
+
+    //ms.solve( 1, 1 );
 
     //drop our hero into maze at random location on path
     // YOUR RANDOM-POSITION-GENERATOR CODE HERE
-    //ms.solve( startX, startY );
+    int startX = (int)(Math.random()*ms.retw());
+    int startY = (int)(Math.random()*ms.reth());
+    while(ms.onPath(startX, startY) == false){
+      startX = (int)(Math.random()*ms.retw());
+      startY = (int)(Math.random()*ms.reth());
+    }
+    ms.solve( startX, startY );
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
 
 }//end class Maze

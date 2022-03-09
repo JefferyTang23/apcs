@@ -11,8 +11,8 @@ public class FastSelect
 {
   public static int fastSelect(int[] arr, int y){
     int a = mysterion(arr, 0, arr.length - 1, 0);
-    while (y != a){
-      if (y > a) {
+    while (y-1 != a){
+      if (y-1 > a) {
         a = mysterion(arr, 0, arr.length - 1, a + 1);
       }
       else {
@@ -94,14 +94,18 @@ public class FastSelect
   public static void main( String[] args )
   {
 
-/*
+
     //init test arrays of magic numbers
     int[] arr1 = {8,21,17,69,343};
     int[] arr3 = {1,28,33,4982,37};
     int[] arr4 = {5,4,17,9000,6};
     int[] arr5 = {3,0,16,599,1024};
 
-
+    System.out.println(fastSelect(arr1, 2));
+    System.out.println(fastSelect(arr3, 1));
+    System.out.println(fastSelect(arr4, 5));
+    System.out.println(fastSelect(arr5, 4));
+/*
     // run mysterion on each array,
     // holding a & b fixed, varying c...
     for( int testC = 0; testC < 5; testC++ ) {

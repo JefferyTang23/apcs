@@ -2,146 +2,134 @@
 // APCS pd6
 // HW72 -- FastSelect
 // 2022-03-08
-// time spent:  hrs
+// time spent:  2hrs
 
-
-
-
-public class FastSelect
-{
-  public static int fastSelect(int[] arr, int y){
-    int a = mysterion(arr, 0, arr.length - 1, 0);
-    while (y-1 != a){
-      if (y-1 > a) {
-        a = mysterion(arr, 0, arr.length - 1, a + 1);
-      }
-      else {
-        a = mysterion(arr, 0, arr.length - 1, a - 1);
-      }
-    }
-    return arr[a];
-  }
-  //--------------v  HELPER METHODS  v--------------
-  //swap values at indices x, y in array o
-  public static void swap( int x, int y, int[] o )
-  {
-    int tmp = o[x];
-    o[x] = o[y];
-    o[y] = tmp;
-  }
-
-  //print input array
-  public static void printArr( int[] a )
-  {
-    for ( int o : a )
-      System.out.print( o + " " );
-    System.out.println();
-  }
-
-  //shuffle elements of input array
-  public static void shuffle( int[] d )
-  {
-    int tmp;
-    int swapPos;
-    for( int i = 0; i < d.length; i++ ) {
-      tmp = d[i];
-      swapPos = i + (int)( (d.length - i) * Math.random() );
-      swap( i, swapPos, d );
-    }
-  }
-
-  //return int array of size s, with each element fr range [0,maxVal)
-  public static int[] buildArray( int s, int maxVal )
-  {
-    int[] retArr = new int[s];
-    for( int i = 0; i < retArr.length; i++ )
-      retArr[i] = (int)( maxVal * Math.random() );
-    return retArr;
-  }
-  //--------------^  HELPER METHODS  ^--------------
-
-
-  /**
-   * int mysterion(int[],int,int,int)
-   * DESCRIP
-   *
-   * @param arr
-   * @param a
-   * @param b
-   * @param c
-   * @return int
-   *
-   */
-  public static int mysterion( int arr[], int a, int b, int c)
-  {
-    int v = arr[c];
-
-    swap( c, b, arr);
-    int s = a;
-
-    for( int i = a; i < b; i++ ) {
-      if ( arr[i] <= v) {
-        swap( i, s, arr );
-        s++;}
-    }
-    swap(s,b,arr);
-
-    return s;
-  }//end mysterion
-
-
-  //main method for testing
-  public static void main( String[] args )
-  {
-
-
-    //init test arrays of magic numbers
-    int[] arr1 = {8,21,17,69,343};
-    int[] arr3 = {1,28,33,4982,37};
-    int[] arr4 = {5,4,17,9000,6};
-    int[] arr5 = {3,0,16,599,1024};
-
-    System.out.println(fastSelect(arr1, 2));
-    System.out.println(fastSelect(arr3, 1));
-    System.out.println(fastSelect(arr4, 5));
-    System.out.println(fastSelect(arr5, 4));
 /*
-    // run mysterion on each array,
-    // holding a & b fixed, varying c...
-    for( int testC = 0; testC < 5; testC++ ) {
-      System.out.println("arr1: ");
-      printArr(arr1);
-      mysterion(arr1,0,4,testC);
-      System.out.println("after mysterion w/ a=0,b=4,c="
-                         + testC +"...");
-      printArr(arr1);
-      System.out.println("-----------------------");
+ALGO:
+Working -
+start at the first index and then just go through the entire array until we find the yth smallest value
 
-      System.out.println("arr3:");
-      printArr(arr3);
-      mysterion(arr3,0,4,testC);
-      System.out.println("after mysterion w/ a=0,b=4,c="
-                         + testC +"...");
-      printArr(arr3);
-      System.out.println("-----------------------");
+not working -
+find the middle array and then either check the middle one on the left or right depending on if pivot is lower or higher than y. Ends when pivot is at index y-1
 
-      System.out.println("arr4:");
-      printArr(arr4);
-      mysterion(arr4,0,4,testC);
-      System.out.println("after mysterion w/ a=0,b=4,c="
-                         + testC +"...");
-      printArr(arr4);
-      System.out.println("-----------------------");
 
-      System.out.println("arr5:");
-      printArr(arr5);
-      mysterion(arr5,0,4,testC);
-      System.out.println("after mysterion w/ a=0,b=4,c="
-                         + testC +"...");
-      printArr(arr5);
-      System.out.println("-----------------------");
-      /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  }//end main
+BEST CASE SCENARIO: (Describe best-case scenario and justify its Big-O classification.)
+when yth smallest is in the y+1 index, and in the middle of the array
+o(1) because doesn't even have to run loop
 
-}//end class Mysterion
+WORST CASE SCENARIO:
+When its not in its correct spot and its an extreme such as the largest element or smallest element
+
+DISCO
+The previous pivot values don't change position when partitioned again
+
+QCC
+How can we make a O(logn) algo using a O(n) algo
+
+
+Include test cases in main() method illustrating each best- and worst-case scenario.
+
+*/
+
+public class FastSelect {
+
+
+    // partition and all of its helper methods
+    public static int partition (int[] arr, int a, int b, int c) {
+
+        int midVal = arr[c];
+
+        swap(arr, c, b);
+        int start = a;
+
+        for (int i = a; i < b; i++) {
+            if (midVal > arr[i]) {
+                swap(arr,start,i);
+                start+=1;
+            }
+        }
+        swap(arr, b, start);
+
+        return start;
+    }
+
+    public static void swap(int[] arr, int a, int b) { // a and b are indexes
+        int oldA = arr[a];
+
+        arr[a] = arr[b];
+
+        arr[b] = oldA;
+
+    }
+
+
+    public static String arrToString(int[] arr) {
+        String str = "{";
+        for (int i : arr) {
+            str += i + ",";
+        }
+        str = str.substring(0, str.length()-1);
+        str += "}";
+        return str;
+    }
+
+
+
+    // fast select
+    // O(nlogn)
+    public static int fastSelect(int[] arr, int xsmallest) { // not working for specific cases (in the case of arr in main method when the 7th largest number is requested)
+
+        System.out.println(arrToString(arr));
+
+        int midIndex = arr.length/2;
+        int partitionEnd = -1;
+
+        while (partitionEnd != xsmallest-1) {
+            System.out.println("partitioning the array at pivot: " + arr[midIndex]);
+            partitionEnd = partition(arr, 0, arr.length-1, midIndex);
+            System.out.println(arrToString(arr));
+
+            if (partitionEnd > xsmallest-1) {  // greater so have to split in half first half
+                midIndex = partitionEnd/2;
+            }
+            else if (xsmallest-1 > partitionEnd) {
+                midIndex = (arr.length + partitionEnd)/2;
+                System.out.println(arr.length + " + " + partitionEnd + " / 2 = " + midIndex);
+            }
+
+            System.out.println("midIndex " + midIndex);
+            System.out.println("partitionEnd " + partitionEnd);
+        }
+        return arr[partitionEnd];
+    }
+
+
+    // groups method - working O(n)
+
+    public static int GroupFastSelect(int[] arr, int y){
+        int a = partition(arr, 0, arr.length - 1, 0);
+        while (y-1 != a){
+            if (y-1 > a) {
+            a = partition(arr, 0, arr.length - 1, a + 1);
+            }
+            else {
+            a = partition(arr, 0, arr.length - 1, a - 1);
+            }
+        }
+        return arr[a];
+    }
+
+
+    public static void main(String[] args) {
+
+        // int[] arr = {7,1,5,12,3};
+        // int[] arr = {10,9,8,7,6,5,4,3,2,1};
+        int[] arr = {0,1,2,3,10,5,9,8,7,6,4};
+
+
+        // fastSelect(arr, 1);
+        System.out.println(fastSelect(arr, Integer.parseInt(args[0])));
+        // System.out.println(fastSelect(arr, 1));
+
+    }
+}

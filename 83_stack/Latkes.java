@@ -1,3 +1,10 @@
+// JAB (Jeffery Tang, Andrew Piatetsky, Brian Kang)
+// APCS pd6
+// HW83: Stacks on Stacks
+// 2022-03-28
+// time spent:  20 minutes
+
+
 /***
  * class Latkes
  * v1
@@ -6,9 +13,11 @@
  **/
 
 /***
-    DISCO
+    DISCO:
+    Stacks have a fixed capacity, or do they? thus the O(n)
 
-    QCC
+    QCC:
+    why do we need a size, aren't the stacks recursively defined (also since we can't access values without removing the val infront of them)
 
  **/
 
@@ -22,59 +31,55 @@ public class Latkes
   //constructor
   public Latkes( int initCapacity )
   {
-    _stack = String[initCapacity];
+    _stack = new String[initCapacity];
     _stackSize = 0;
-  }// O(?)
+  }// O(1)
 
 
   //means of insertion
   public void push( String s )
   {
     _stack[_stack.length - _stackSize - 1] = s;
-    _stackSize++;
-  }// O(?)
+    _stackSize +=1;
+  }// O(1)
 
 
   //means of removal
   public String pop( )
   {
-    // String retVal = _stack[_stack.length - _stackSize - 1];
-    // _stack[_stack.length - _stackSize - 1] = null;
-    // _stackSize--;
-    // return retVal;
-  }// O(?)
+    if (isEmpty()) {
+        return null;
+    }
+    String retVal = _stack[_stack.length - _stackSize];
+    _stack[_stack.length - _stackSize] = null;
+
+    _stackSize -= 1;
+
+    return retVal;
+
+  }// O(1)
 
 
   //chk for emptiness
   public boolean isEmpty()
   {
-    /* your
-       SIMPLE
-       SMART
-       magicks
-       here
-    */
-  }// O(?)
+    return _stackSize == 0;
+  }// O(1)
 
 
   //chk for fullness
   public boolean isFull()
   {
-    /* your
-       SIMPLE
-       SMART
-       magicks
-       here
-    */
-  }// O(?)
+    return _stackSize == _stack.length;
+  }// O(1)
 
 
   //main method for testing
   public static void main( String[] args )
   {
+    /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v*/
 
-    Latkes tastyStack = new Latkes(10);
-    /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
+    Latkes tastyStack = new Latkes(12);
 
     tastyStack.push("aoo");
     tastyStack.push("boo");
@@ -116,7 +121,7 @@ public class Latkes
 
     //stack empty by now; SOP(null)
     System.out.println( tastyStack.pop() );
-      ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
+      /*^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
 
   }//end main()
 

@@ -26,6 +26,7 @@ public class Welcome03_List {
       System.out.println("Enter a state abbreviation: ");
       String state = sc.next();
       System.out.println("Stations in " + state);
+      WeatherStation smallest = allstns.get(0);
       for (WeatherStation ws : allstns) {
          if (ws.isLocatedInState(state)) {
            if(ws.getLat() < smallest.getLat()) {
@@ -34,6 +35,7 @@ public class Welcome03_List {
             System.out.println("  " + ws.getId() + ": " + ws.getName());
          }
       }
+      System.out.println("Southmost: " + smallest.getId() + ": " + smallest.getName());
    }
 
   // public class WeatherStation {

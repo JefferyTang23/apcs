@@ -32,7 +32,7 @@ public class WeatherStation {
       return this.state.equals(st);
    }
 
-   public String getLat () {
+   public double getLat () {
      return lat;
    }
 

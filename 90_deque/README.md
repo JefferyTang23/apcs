@@ -1,8 +1,8 @@
-JAB (Jeffery Tang, Andrew Piatetsky, Brian Kang)
-APCS pd6
-HW90: Deque the Halls
-2022-04-13
-time spent:  20min
+##### JAB (Jeffery Tang, Andrew Piatetsky, Brian Kang)
+##### APCS pd6
+##### HW90: Deque the Halls
+##### 2022-04-13
+##### time spent:  20min
 
 
 todo list

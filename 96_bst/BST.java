@@ -1,4 +1,12 @@
 /**
+RachelHateCult: Xinqing Lin, Jeffery Tang, May Qiu
+APCS Pd 6
+HW96 -- BSTs is the Perfect Place for Shade
+2022-05-10
+time spent: 1 hrs
+/**
+
+/**
  * class BST
  * v1:partial
  * SKELETON
@@ -11,6 +19,8 @@
  *  and any value in its right subtree must be greater.)
  *
  * This BST implementation only holds ints (its nodes have int cargo)
+
+ Imported from Library
  */
 
 public class BST
@@ -117,6 +127,82 @@ public class BST
   //~~~~~~~~~~~~~^~~TRAVERSALS~~^~~~~~~~~~~~~~~~~~~~~~
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+  /*****************************************************
+   * TreeNode search(int)
+   * returns pointer to node containing target,
+   * or null if target not found
+   *****************************************************/
+  public TreeNode search( int target )
+  {
+    return search(target, _root);
+  }
+  public TreeNode search( int target, TreeNode padre ) {
+    if (target == padre.getValue()) {
+      return padre;
+    }
+    else if (target < padre.getValue()) {
+      search(target, padre.getLeft());
+    }
+    else {
+      search(target, padre.getRight());
+    }
+
+    return null; 
+  }
+
+
+  /*****************************************************
+   * int height()
+   * returns height of this tree (length of longest leaf-to-root path)
+   * eg: a 1-node tree has height 1
+   *****************************************************/
+  public int height()
+  {
+    return height(_root);
+  }
+
+  public int height(TreeNode helpidontknowwhatimdoing)
+  {
+    int lefty = 0;
+    int righty = 0;
+    if (helpidontknowwhatimdoing == null) {
+      return 0;
+    }
+
+    lefty = height(helpidontknowwhatimdoing.getLeft()) + 1;
+    righty = height(helpidontknowwhatimdoing.getRight()) + 1;
+
+    if (lefty > righty) {
+      return lefty;
+    }
+    else {
+      return righty;
+    }
+  }
+
+
+  /*****************************************************
+   * int numLeaves()
+   * returns number of leaves in tree
+   *****************************************************/
+  public int numLeaves()
+  {
+    return numLeaves(_root);
+  }
+
+  public int numLeaves(TreeNode help)
+  {
+    if (help == null) {
+      return 0;
+    }
+    if (help.getLeft() == null && help.getRight() == null) {
+      return 1;
+    }
+    else {
+      return numLeaves(help.getLeft()) + numLeaves(help.getRight());
+    }
+  }
+
 
 
   //main method for testing
@@ -132,6 +218,7 @@ public class BST
     arbol.insert( 6 );
     arbol.insert( 1 );
     arbol.insert( 3 );
+    //arbol.insert( 7 );
 
     System.out.println( "\n-----------------------------");
     System.out.println( "pre-order traversal:" );
@@ -146,54 +233,12 @@ public class BST
     arbol.postOrderTrav();
 
     System.out.println( "\n-----------------------------");
+
+    System.out.println("height: " + arbol.height());
+
+    System.out.println("numLeaves: " + arbol.numLeaves());
     /*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~if (target < _root)~~~~~~~~~~~~~~~*/
-
-
-    /*****************************************************
-     * TreeNode search(int)
-     * returns pointer to node containing target,
-     * or null if target not found
-     *****************************************************/
-    public TreeNode search( int target )
-    {
-      search(target, _root);
-    }
-    public TreeNode search( int target, TreeNode padre ) {
-      if (target == padre.getValue()) {
-        return padre;
-      }
-      else if (target < padre.getValue()) {
-        search(target, padre.getLeft());
-      }
-      else {
-        search(target, padre.getRight());
-      }
-    }
-
-
-    /*****************************************************
-     * int height()
-     * returns height of this tree (length of longest leaf-to-root path)
-     * eg: a 1-node tree has height 1
-     *****************************************************/
-    public int height()
-    {
-    	
-    }
-
-
-    /*****************************************************
-     * int numLeaves()
-     * returns number of leaves in tree
-     *****************************************************/
-    public int numLeaves()
-    {
-    	/*** YOUR IMPLEMENTATION HERE ***/
-    }
-
-
-
 
     /**
        EXPECTED OUTPUT:

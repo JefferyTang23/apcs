@@ -1,4 +1,12 @@
 /**
+RachelHateCult: Xinqing Lin, Jeffery Tang, May Qiu
+APCS Pd 6
+HW96 -- BSTs is the Perfect Place for Shade
+2022-05-10
+time spent: 1 hrs
+/**
+
+/**
  * class TreeNode
  * SKELETON
  * Implements a node for use in a binary tree.
@@ -84,7 +92,7 @@ public class TreeNode
   /**
    * Sets the value of this tree node.
    */
-  void setValue( int theNewValue ) 
+  void setValue( int theNewValue )
   {
     _cargo = theNewValue;
   }
